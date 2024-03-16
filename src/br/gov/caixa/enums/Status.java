@@ -1,6 +1,6 @@
 package br.gov.caixa.enums;
 
-public enum StatusUsuario {
+public enum Status {
 
     ATIVO,
     INATIVO;

@@ -1,27 +1,30 @@
 package br.gov.caixa.usuarios;
 
 import br.gov.caixa.contas.ContaCorrente;
+import br.gov.caixa.contas.ContaInvestimento;
+import br.gov.caixa.contas.ContaPoupanca;
 import br.gov.caixa.enums.ClassificacaoUsuario;
-import br.gov.caixa.enums.StatusUsuario;
+import br.gov.caixa.enums.Status;
 
 import java.util.Date;
 
 public abstract class Usuario {
 
     private int id;
-    private ClassificacaoUsuario classificacao;
     private String nome;
     private Date dataCadastro;
-    private StatusUsuario status;
-
+    private Status status;
+    private ClassificacaoUsuario classificacao;
     private ContaCorrente contaCorrente;
+    private ContaPoupanca contaPoupanca;
+    private ContaInvestimento contaInvestimento;
 
-    public Usuario(int id, ClassificacaoUsuario classificacao, String nome, Date dataCadastro, StatusUsuario status) {
+    public Usuario(int id, String nome, Date dataCadastro, Status status) {
         this.id = id;
         this.nome = nome;
         this.dataCadastro = dataCadastro;
         this.status = status;
-        this.contaCorrente = new ContaCorrente();
+        this.contaCorrente = new ContaCorrente(this.getId(), this.getClassificacao());
     }
 
     public int getId() {
@@ -56,11 +59,11 @@ public abstract class Usuario {
         this.classificacao = classificacao;
     }
 
-    public StatusUsuario getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(StatusUsuario status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -70,5 +73,17 @@ public abstract class Usuario {
 
     public void setContaCorrente(ContaCorrente contaCorrente) {
         this.contaCorrente = contaCorrente;
+    }
+
+    public void abrirContaPoupanca() {
+        if (this.getClassificacao() == ClassificacaoUsuario.CLIENTE_PF) {
+            this.contaPoupanca = new ContaPoupanca(this.getId(), this.getClassificacao());
+        } else {
+            System.out.println("Apenas clientes pessoa física podem ter conta poupança.");
+        }
+    }
+
+    public void abrirContaInvestimento() {
+        this.contaInvestimento = new ContaInvestimento(this.getId(), this.getClassificacao());
     }
 }

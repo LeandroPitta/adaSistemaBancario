@@ -1,7 +1,7 @@
 package br.gov.caixa.usuarios;
 
 import br.gov.caixa.enums.ClassificacaoUsuario;
-import br.gov.caixa.enums.StatusUsuario;
+import br.gov.caixa.enums.Status;
 
 import java.util.Date;
 
@@ -9,9 +9,10 @@ public final class ClientePF extends Usuario {
 
     private int cpf;
 
-    public ClientePF(int id, ClassificacaoUsuario classificacao, String nome, Date dataCadastro, StatusUsuario status, int cpf) {
-        super(id, classificacao, nome, dataCadastro, status);
+    public ClientePF(int id, String nome, Date dataCadastro, Status status, int cpf) {
+        super(id, nome, dataCadastro, status);
         this.cpf = cpf;
+        setClassificacao(ClassificacaoUsuario.CLIENTE_PF);
     }
 
     public int getCpf() {
