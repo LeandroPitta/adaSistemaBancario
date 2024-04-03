@@ -3,15 +3,16 @@ package br.gov.caixa.contas;
 import br.gov.caixa.enums.ClassificacaoUsuario;
 import br.gov.caixa.enums.Status;
 import br.gov.caixa.enums.TipoAcaoConta;
+import br.gov.caixa.interfaces.ContaInterface;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Conta {
+public abstract class Conta implements ContaInterface {
     protected int id;
     protected double saldo;
-    protected List<HistoricoAcoes> historicoAcoes;
+    protected List<HistoricoAcao> historicoAcoes;
     protected Date dataAtualizacao;
     protected Status status;
     protected int idUsuario;
@@ -44,11 +45,11 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    public List<HistoricoAcoes> getHistoricoAcoes() {
+    public List<HistoricoAcao> getHistoricoAcoes() {
         return historicoAcoes;
     }
 
-    public void setHistoricoAcoes(List<HistoricoAcoes> historicoAcoes) {
+    public void setHistoricoAcoes(List<HistoricoAcao> historicoAcoes) {
         this.historicoAcoes = historicoAcoes;
     }
 
@@ -76,35 +77,35 @@ public abstract class Conta {
         this.idUsuario = idUsuario;
     }
 
-    public void saque(double valorPretendido) {
+    public void sacar(double valorPretendido) {
         if (valorPretendido > saldo) {
             System.out.println("Saldo insuficiente para realizar o saque.");
             return;
         }
         saldo -= valorPretendido;
-        registrarAcao(new HistoricoAcoes(new Date(), TipoAcaoConta.SAQUE, valorPretendido, valorPretendido, idUsuario, "Saque realizado"));
+        registrarHistoricoAcao(new HistoricoAcao(new Date(), TipoAcaoConta.SAQUE, valorPretendido, valorPretendido, idUsuario, "Saque realizado"));
     }
 
-    public void deposito(double valorPretendido) {
+    public void depositar(double valorPretendido) {
         saldo += valorPretendido;
-        registrarAcao(new HistoricoAcoes(new Date(), TipoAcaoConta.DEPOSITO, valorPretendido, valorPretendido, idUsuario,"Depósito realizado"));
+        registrarHistoricoAcao(new HistoricoAcao(new Date(), TipoAcaoConta.DEPOSITO, valorPretendido, valorPretendido, idUsuario,"Depósito realizado"));
     }
 
-    public void transferencia(double valorPretendido, int idDestino) {
+    public void transferir(double valorPretendido, int idDestino) {
         if (valorPretendido > saldo) {
             System.out.println("Saldo insuficiente para realizar a transferência.");
             return;
         }
         saldo -= valorPretendido;
-        registrarAcao(new HistoricoAcoes(new Date(), TipoAcaoConta.TRANSFERENCIA, valorPretendido, valorPretendido, idUsuario, idDestino, "Transferência realizada"));
+        registrarHistoricoAcao(new HistoricoAcao(new Date(), TipoAcaoConta.TRANSFERENCIA, valorPretendido, valorPretendido, idUsuario, idDestino, "Transferência realizada"));
     }
 
-    public void consultaSaldo() {
+    public void consultarSaldo() {
         System.out.println("Saldo atual: " + saldo);
-        registrarAcao(new HistoricoAcoes(new Date(), TipoAcaoConta.CONSULTA_SALDO, saldo, idUsuario, "Consultou o saldo"));
+        registrarHistoricoAcao(new HistoricoAcao(new Date(), TipoAcaoConta.CONSULTA_SALDO, saldo, idUsuario, "Consultou o saldo"));
     }
 
-    protected void registrarAcao(HistoricoAcoes acao) {
+    public void registrarHistoricoAcao(HistoricoAcao acao) {
         historicoAcoes.add(acao);
     }
 }

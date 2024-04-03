@@ -4,7 +4,7 @@ import br.gov.caixa.enums.TipoAcaoConta;
 
 import java.util.Date;
 
-public class HistoricoAcoes {
+public class HistoricoAcao {
     private Date data;
     private TipoAcaoConta tipo;
     private double valorPretendido;
@@ -14,7 +14,7 @@ public class HistoricoAcoes {
     private String observacao;
 
     // Construtor para ação de saque e investimento
-    public HistoricoAcoes(Date data, TipoAcaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, String observacao) {
+    public HistoricoAcao(Date data, TipoAcaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, String observacao) {
         this.data = new Date();
         this.tipo = tipo;
         this.valorPretendido = valorPretendido;
@@ -24,7 +24,7 @@ public class HistoricoAcoes {
     }
 
     // Construtor para ação de deposito e transferência
-    public HistoricoAcoes(Date data, TipoAcaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, int usuarioDestino, String observacao) {
+    public HistoricoAcao(Date data, TipoAcaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, int usuarioDestino, String observacao) {
         this.data = new Date();
         this.tipo = tipo;
         this.valorPretendido = valorPretendido;
@@ -35,7 +35,7 @@ public class HistoricoAcoes {
     }
 
     // Construtor para ação de consulta saldo e rendimento
-    public HistoricoAcoes(Date data, TipoAcaoConta tipo, double valorReal, int usuarioOrigem, String observacao) {
+    public HistoricoAcao(Date data, TipoAcaoConta tipo, double valorReal, int usuarioOrigem, String observacao) {
         this.data = new Date();
         this.tipo = tipo;
         this.valorReal = valorReal;
