@@ -3,13 +3,13 @@ package br.gov.caixa.contas;
 import br.gov.caixa.enums.ClassificacaoUsuario;
 import br.gov.caixa.enums.Status;
 import br.gov.caixa.enums.TipoAcaoConta;
-import br.gov.caixa.interfaces.ContaInterface;
+import br.gov.caixa.interfaces.Conta;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Conta implements ContaInterface {
+public abstract class ContaAbstract implements Conta {
     protected int id;
     protected double saldo;
     protected List<HistoricoAcao> historicoAcoes;
@@ -19,7 +19,7 @@ public abstract class Conta implements ContaInterface {
     ClassificacaoUsuario classificacao;
 
     // Construtor
-    public Conta(int idUsuario, ClassificacaoUsuario classificacao) {
+    public ContaAbstract(int idUsuario, ClassificacaoUsuario classificacao) {
         this.id = 1; // vai vir do banco de dados
         this.saldo = 0;
         this.historicoAcoes = new ArrayList<>();
@@ -78,34 +78,18 @@ public abstract class Conta implements ContaInterface {
     }
 
     public void sacar(double valorPretendido) {
-        if (valorPretendido > saldo) {
-            System.out.println("Saldo insuficiente para realizar o saque.");
-            return;
-        }
-        saldo -= valorPretendido;
-        registrarHistoricoAcao(new HistoricoAcao(new Date(), TipoAcaoConta.SAQUE, valorPretendido, valorPretendido, idUsuario, "Saque realizado"));
+        RegraNegocio.sacar(this, valorPretendido);
     }
 
     public void depositar(double valorPretendido) {
-        saldo += valorPretendido;
-        registrarHistoricoAcao(new HistoricoAcao(new Date(), TipoAcaoConta.DEPOSITO, valorPretendido, valorPretendido, idUsuario,"Depósito realizado"));
+        RegraNegocio.depositar(this, valorPretendido);
     }
 
     public void transferir(double valorPretendido, int idDestino) {
-        if (valorPretendido > saldo) {
-            System.out.println("Saldo insuficiente para realizar a transferência.");
-            return;
-        }
-        saldo -= valorPretendido;
-        registrarHistoricoAcao(new HistoricoAcao(new Date(), TipoAcaoConta.TRANSFERENCIA, valorPretendido, valorPretendido, idUsuario, idDestino, "Transferência realizada"));
+        RegraNegocio.transferir(this, valorPretendido, idDestino);
     }
 
     public void consultarSaldo() {
-        System.out.println("Saldo atual: " + saldo);
-        registrarHistoricoAcao(new HistoricoAcao(new Date(), TipoAcaoConta.CONSULTA_SALDO, saldo, idUsuario, "Consultou o saldo"));
-    }
-
-    public void registrarHistoricoAcao(HistoricoAcao acao) {
-        historicoAcoes.add(acao);
+        RegraNegocio.consultarSaldo(this);
     }
 }

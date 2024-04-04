@@ -2,7 +2,7 @@ package br.gov.caixa.interfaces;
 
 import br.gov.caixa.contas.HistoricoAcao;
 
-public interface ContaInterface {
+public interface Conta {
 
     void sacar(double valorPretendido);
     void depositar(double valorPretendido);

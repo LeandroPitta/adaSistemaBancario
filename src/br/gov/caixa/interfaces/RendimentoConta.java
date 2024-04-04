@@ -1,5 +1,5 @@
 package br.gov.caixa.interfaces;
 
-public interface RendimentoContaInterface extends ContaInterface {
+public interface RendimentoConta extends Conta {
     void calcularRendimento();
 }

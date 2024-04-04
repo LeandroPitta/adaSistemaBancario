@@ -2,11 +2,11 @@ package br.gov.caixa.contas;
 
 import br.gov.caixa.enums.ClassificacaoUsuario;
 import br.gov.caixa.enums.TipoAcaoConta;
-import br.gov.caixa.interfaces.InvestimentoContaInterface;
+import br.gov.caixa.interfaces.InvestimentoConta;
 
 import java.util.Date;
 
-public final class ContaCorrente extends Conta implements InvestimentoContaInterface {
+public final class ContaCorrente extends ContaAbstract implements InvestimentoConta {
 
     public ContaCorrente(int idUsuario, ClassificacaoUsuario classificacao) {
         super(idUsuario, classificacao);
