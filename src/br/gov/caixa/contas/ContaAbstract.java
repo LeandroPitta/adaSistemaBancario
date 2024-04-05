@@ -92,4 +92,8 @@ public abstract class ContaAbstract implements Conta {
     public void consultarSaldo() {
         RegraNegocio.consultarSaldo(this);
     }
+
+    public void registrarHistoricoAcao(HistoricoAcao acao) {
+        historicoAcoes.add(acao);
+    }
 }
