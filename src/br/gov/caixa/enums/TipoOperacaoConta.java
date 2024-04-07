@@ -1,6 +1,6 @@
 package br.gov.caixa.enums;
 
-public enum TipoAcaoConta {
+public enum TipoOperacaoConta {
     SAQUE,
     DEPOSITO,
     TRANSFERENCIA,

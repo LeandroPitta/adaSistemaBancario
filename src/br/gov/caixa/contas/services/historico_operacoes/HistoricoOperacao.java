@@ -1,30 +1,22 @@
-package br.gov.caixa.contas;
+package br.gov.caixa.contas.services.historico_operacoes;
 
-import br.gov.caixa.enums.TipoAcaoConta;
+import br.gov.caixa.enums.TipoOperacaoConta;
 
 import java.util.Date;
 
-public class HistoricoAcao {
+public abstract class HistoricoOperacao {
     private Date data;
-    private TipoAcaoConta tipo;
+    private TipoOperacaoConta tipo;
     private double valorPretendido;
     private double valorReal;
     private int usuarioOrigem;
     private int usuarioDestino;
     private String observacao;
 
-    // Construtor para ação de saque e investimento
-    public HistoricoAcao(Date data, TipoAcaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, String observacao) {
-        this.data = new Date();
-        this.tipo = tipo;
-        this.valorPretendido = valorPretendido;
-        this.valorReal = valorReal;
-        this.usuarioOrigem = usuarioOrigem;
-        this.observacao = observacao;
-    }
+    public HistoricoOperacao(){}
 
     // Construtor para ação de deposito e transferência
-    public HistoricoAcao(Date data, TipoAcaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, int usuarioDestino, String observacao) {
+    public HistoricoOperacao(Date data, TipoOperacaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, int usuarioDestino, String observacao) {
         this.data = new Date();
         this.tipo = tipo;
         this.valorPretendido = valorPretendido;
@@ -35,7 +27,7 @@ public class HistoricoAcao {
     }
 
     // Construtor para ação de consulta saldo e rendimento
-    public HistoricoAcao(Date data, TipoAcaoConta tipo, double valorReal, int usuarioOrigem, String observacao) {
+    public HistoricoOperacao(Date data, TipoOperacaoConta tipo, double valorReal, int usuarioOrigem, String observacao) {
         this.data = new Date();
         this.tipo = tipo;
         this.valorReal = valorReal;
@@ -51,11 +43,11 @@ public class HistoricoAcao {
         this.data = data;
     }
 
-    public TipoAcaoConta getTipo() {
+    public TipoOperacaoConta getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoAcaoConta tipo) {
+    public void setTipo(TipoOperacaoConta tipo) {
         this.tipo = tipo;
     }
 

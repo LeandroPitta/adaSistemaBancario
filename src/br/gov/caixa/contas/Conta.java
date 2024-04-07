@@ -1,5 +1,6 @@
 package br.gov.caixa.contas;
 
+import br.gov.caixa.contas.services.historico_operacoes.HistoricoOperacao;
 import br.gov.caixa.enums.ClassificacaoUsuario;
 import br.gov.caixa.enums.Status;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public abstract class Conta {
     private int id;
     private double saldo;
-    private List<HistoricoAcao> historicoAcoes;
+    private List<HistoricoOperacao> historicoAcoes;
     private Date dataAtualizacao;
     private Status status;
     private int idUsuario;
@@ -43,11 +44,11 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    public List<HistoricoAcao> getHistoricoAcoes() {
+    public List<HistoricoOperacao> getHistoricoAcoes() {
         return historicoAcoes;
     }
 
-    public void setHistoricoAcoes(List<HistoricoAcao> historicoAcoes) {
+    public void setHistoricoAcoes(List<HistoricoOperacao> historicoAcoes) {
         this.historicoAcoes = historicoAcoes;
     }
 
