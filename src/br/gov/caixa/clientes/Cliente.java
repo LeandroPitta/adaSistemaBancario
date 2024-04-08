@@ -4,14 +4,14 @@ import br.gov.caixa.enums.Status;
 
 import java.util.Date;
 
-public abstract class Clientes {
+public abstract class Cliente {
 
     private int id;
     private String nome;
     private Date dataCadastro;
     private Status status;
 
-    public Clientes(int id, String nome, Status status) {
+    public Cliente(int id, String nome, Status status) {
         this.id = id;
         this.nome = nome;
         this.dataCadastro = new Date();

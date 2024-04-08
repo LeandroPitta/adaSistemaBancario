@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class Conta {
+
     private int id;
     private static int sequencialId = 0;
     private double saldo;
@@ -23,10 +24,15 @@ public abstract class Conta {
         this.dataAtualizacao = new Date();
         this.status = Status.ATIVO;
         this.idCliente = idCliente;
+        ListaContas.adicionarConta(this);
     }
 
     public int getId() {
         return id;
+    }
+
+    void setId(int id) {
+        this.id = id;
     }
 
     public double getSaldo() {

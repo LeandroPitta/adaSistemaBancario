@@ -2,7 +2,7 @@ package br.gov.caixa.clientes;
 
 import br.gov.caixa.enums.Status;
 
-public final class ClientePJ extends Clientes {
+public final class ClientePJ extends Cliente {
 
     private String nomeFantasia;
 
