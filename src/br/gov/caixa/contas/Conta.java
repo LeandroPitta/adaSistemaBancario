@@ -1,18 +1,14 @@
 package br.gov.caixa.contas;
 
-import br.gov.caixa.contas.services.historico_operacoes.HistoricoOperacao;
 import br.gov.caixa.enums.Status;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public abstract class Conta {
 
     private int id;
     private static int sequencialId = 0;
     private double saldo;
-    private List<HistoricoOperacao> historicoAcoes;
     private Date dataAtualizacao;
     private Status status;
     private int idCliente;
@@ -20,7 +16,6 @@ public abstract class Conta {
     public Conta(int idCliente) {
         this.id = ++sequencialId;
         this.saldo = 0;
-        this.historicoAcoes = new ArrayList<>();
         this.dataAtualizacao = new Date();
         this.status = Status.ATIVO;
         this.idCliente = idCliente;
@@ -31,24 +26,12 @@ public abstract class Conta {
         return id;
     }
 
-    void setId(int id) {
-        this.id = id;
-    }
-
     public double getSaldo() {
         return saldo;
     }
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
-    }
-
-    public List<HistoricoOperacao> getHistoricoAcoes() {
-        return historicoAcoes;
-    }
-
-    public void setHistoricoAcoes(List<HistoricoOperacao> historicoAcoes) {
-        this.historicoAcoes = historicoAcoes;
     }
 
     public Date getDataAtualizacao() {
@@ -67,7 +50,4 @@ public abstract class Conta {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
 }
