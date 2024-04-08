@@ -15,17 +15,6 @@ public abstract class HistoricoOperacao {
 
     public HistoricoOperacao(){}
 
-    // Construtor para ação de deposito e transferência
-    public HistoricoOperacao(Date data, TipoOperacaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, int usuarioDestino, String observacao) {
-        this.data = new Date();
-        this.tipo = tipo;
-        this.valorPretendido = valorPretendido;
-        this.valorReal = valorReal;
-        this.usuarioOrigem = usuarioOrigem;
-        this.usuarioDestino = usuarioDestino;
-        this.observacao = observacao;
-    }
-
     // Construtor para ação de consulta saldo e rendimento
     public HistoricoOperacao(Date data, TipoOperacaoConta tipo, double valorReal, int usuarioOrigem, String observacao) {
         this.data = new Date();

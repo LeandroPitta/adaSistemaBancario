@@ -2,13 +2,13 @@ package br.gov.caixa.contas.services.operacoes;
 
 import br.gov.caixa.contas.Conta;
 
-public class TransferenciaPadrao implements Transferencia {
+public class InvestimentoPadrao implements Investimento {
 
     @Override
-    public void transferir(Conta conta, double valorPretendido, Conta contaDestino) {
+    public void investir(Conta conta, double valorPretendido, Conta contaInvestimento) {
         if (ConfereSaldoSuficiente.conferir(conta, valorPretendido)) {
             conta.setSaldo(conta.getSaldo() - valorPretendido);
-            contaDestino.setSaldo(contaDestino.getSaldo() + valorPretendido);
+            contaInvestimento.setSaldo(contaInvestimento.getSaldo() + valorPretendido);
         }
     }
 }

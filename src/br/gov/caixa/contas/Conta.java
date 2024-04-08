@@ -1,7 +1,6 @@
 package br.gov.caixa.contas;
 
 import br.gov.caixa.contas.services.historico_operacoes.HistoricoOperacao;
-import br.gov.caixa.enums.ClassificacaoUsuario;
 import br.gov.caixa.enums.Status;
 
 import java.util.ArrayList;
@@ -10,30 +9,24 @@ import java.util.List;
 
 public abstract class Conta {
     private int id;
+    private static int sequencialId = 0;
     private double saldo;
     private List<HistoricoOperacao> historicoAcoes;
     private Date dataAtualizacao;
     private Status status;
-    private int idUsuario;
-    ClassificacaoUsuario classificacao;
+    private int idCliente;
 
-    // Construtor
-    public Conta(int idUsuario, ClassificacaoUsuario classificacao) {
-        this.id = 1; // vai vir do banco de dados
+    public Conta(int idCliente) {
+        this.id = ++sequencialId;
         this.saldo = 0;
         this.historicoAcoes = new ArrayList<>();
         this.dataAtualizacao = new Date();
         this.status = Status.ATIVO;
-        this.idUsuario = idUsuario;
-        this.classificacao = classificacao;
+        this.idCliente = idCliente;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public double getSaldo() {
@@ -56,10 +49,6 @@ public abstract class Conta {
         return dataAtualizacao;
     }
 
-    public void setDataAtualizacao(Date dataAtualizacao) {
-        this.dataAtualizacao = dataAtualizacao;
-    }
-
     public Status getStatus() {
         return status;
     }
@@ -68,12 +57,11 @@ public abstract class Conta {
         this.status = status;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
-
 }
