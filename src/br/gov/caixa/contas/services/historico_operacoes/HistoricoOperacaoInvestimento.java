@@ -14,5 +14,6 @@ public class HistoricoOperacaoInvestimento extends HistoricoOperacao {
         setValorReal(valorReal);
         setContaOrigem(contaOrigem);
         setObservacao(observacao);
+        ListaHistoricoOperacoes.adicionarHistoricoOperacao(this);
     }
 }

@@ -15,5 +15,6 @@ public class HistoricoOperacaoTransferencia extends HistoricoOperacao {
         setContaOrigem(contaOrigem);
         setContaDestino(contaDestino);
         setObservacao(observacao);
+        ListaHistoricoOperacoes.adicionarHistoricoOperacao(this);
     }
 }

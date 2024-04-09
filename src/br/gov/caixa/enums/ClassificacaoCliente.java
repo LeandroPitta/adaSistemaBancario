@@ -1,7 +1,10 @@
 package br.gov.caixa.enums;
 
 import br.gov.caixa.clientes.*;
-import br.gov.caixa.contas.ContaCorrente;
+import br.gov.caixa.contas.*;
+import br.gov.caixa.contas.services.historico_operacoes.HistoricoAberturaConta;
+
+import java.util.Date;
 
 public enum ClassificacaoCliente {
     CLIENTE_PF {
@@ -16,7 +19,8 @@ public enum ClassificacaoCliente {
                 return "\nCPF digitado não é válido!\n";
             }
             new ClientePF(id, nome, Status.ATIVO);
-            new ContaCorrente(id);
+            Conta conta = new ContaCorrente(id);
+            new HistoricoAberturaConta(new Date(), TipoOperacaoConta.ABERTURA_CONTA, conta, "Cliente " + nome + " cadastrado e abertura de conta efetuada com sucesso!");
             return "\nCliente e Conta cadastrados com sucesso!\n";
         }
     },
@@ -32,7 +36,8 @@ public enum ClassificacaoCliente {
                 return "\nCNPJ digitado não é válido!\n";
             }
             new ClientePJ(id, nome, Status.ATIVO);
-            new ContaCorrente(id);
+            Conta conta = new ContaCorrente(id);
+            new HistoricoAberturaConta(new Date(), TipoOperacaoConta.ABERTURA_CONTA, conta, "Cliente " + nome + " cadastrado e abertura de conta efetuada com sucesso!");
             return "\nCliente e Conta cadastrados com sucesso!\n";
         }
     };

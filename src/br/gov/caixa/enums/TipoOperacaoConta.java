@@ -6,5 +6,6 @@ public enum TipoOperacaoConta {
     TRANSFERENCIA,
     INVESTIMENTO,
     CONSULTA_SALDO,
-    RENDIMENTO
+    RENDIMENTO,
+    ABERTURA_CONTA;
 }

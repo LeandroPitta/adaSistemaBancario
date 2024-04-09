@@ -14,5 +14,6 @@ public class HistoricoOperacaoDeposito extends HistoricoOperacao {
         setValorReal(valorReal);
         setContaDestino(contaDestino);
         setObservacao(observacao);
+        ListaHistoricoOperacoes.adicionarHistoricoOperacao(this);
     }
 }
