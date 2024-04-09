@@ -1,5 +1,6 @@
 package br.gov.caixa.contas.services.historico_operacoes;
 
+import br.gov.caixa.contas.Conta;
 import br.gov.caixa.enums.TipoOperacaoConta;
 
 import java.util.Date;
@@ -9,20 +10,9 @@ public abstract class HistoricoOperacao {
     private TipoOperacaoConta tipo;
     private double valorPretendido;
     private double valorReal;
-    private int usuarioOrigem;
-    private int usuarioDestino;
+    private Conta contaOrigem;
+    private Conta contaDestino;
     private String observacao;
-
-    public HistoricoOperacao(){}
-
-    // Construtor para ação de consulta saldo e rendimento
-    public HistoricoOperacao(Date data, TipoOperacaoConta tipo, double valorReal, int usuarioOrigem, String observacao) {
-        this.data = new Date();
-        this.tipo = tipo;
-        this.valorReal = valorReal;
-        this.usuarioOrigem = usuarioOrigem;
-        this.observacao = observacao;
-    }
 
     public Date getData() {
         return data;
@@ -56,20 +46,20 @@ public abstract class HistoricoOperacao {
         this.valorReal = valorReal;
     }
 
-    public int getUsuarioOrigem() {
-        return usuarioOrigem;
+    public Conta getContaOrigem() {
+        return contaOrigem;
     }
 
-    public void setUsuarioOrigem(int usuarioOrigem) {
-        this.usuarioOrigem = usuarioOrigem;
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
     }
 
-    public int getUsuarioDestino() {
-        return usuarioDestino;
+    public Conta getContaDestino() {
+        return contaDestino;
     }
 
-    public void setUsuarioDestino(int usuarioDestino) {
-        this.usuarioDestino = usuarioDestino;
+    public void setContaDestino(Conta contaDestino) {
+        this.contaDestino = contaDestino;
     }
 
     public String getObservacao() {

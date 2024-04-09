@@ -6,14 +6,14 @@ import java.util.Date;
 
 public abstract class Conta {
 
-    private int id;
-    private static int sequencialId = 0;
+    private long id;
+    private static long sequencialId = 0;
     private double saldo;
     private Date dataAtualizacao;
     private Status status;
-    private int idCliente;
+    private long idCliente;
 
-    public Conta(int idCliente) {
+    public Conta(long idCliente) {
         this.id = ++sequencialId;
         this.saldo = 0;
         this.dataAtualizacao = new Date();
@@ -22,7 +22,7 @@ public abstract class Conta {
         ListaContas.adicionarConta(this);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -46,7 +46,7 @@ public abstract class Conta {
         this.status = status;
     }
 
-    public int getIdCliente() {
+    public long getIdCliente() {
         return idCliente;
     }
 

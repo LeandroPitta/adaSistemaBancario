@@ -6,7 +6,7 @@ public final class ClientePJ extends Cliente {
 
     private String nomeFantasia;
 
-    public ClientePJ(int id, String nome, Status status) {
+    public ClientePJ(long id, String nome, Status status) {
         super(id, nome, status);
     }
 

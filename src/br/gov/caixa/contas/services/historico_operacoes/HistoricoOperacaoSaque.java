@@ -1,16 +1,17 @@
 package br.gov.caixa.contas.services.historico_operacoes;
 
+import br.gov.caixa.contas.Conta;
 import br.gov.caixa.enums.TipoOperacaoConta;
 
 import java.util.Date;
 
 public class HistoricoOperacaoSaque extends HistoricoOperacao {
-    public HistoricoOperacaoSaque(Date data, TipoOperacaoConta tipo, double valorPretendido, double valorReal, int usuarioOrigem, String observacao) {
+    public HistoricoOperacaoSaque(Date data, TipoOperacaoConta tipo, double valorPretendido, double valorReal, Conta contaOrigem, String observacao) {
         setData(new Date());
         setTipo(tipo);
         setValorPretendido(valorPretendido);
         setValorReal(valorReal);
-        setUsuarioOrigem(usuarioOrigem);
+        setContaOrigem(contaOrigem);
         setObservacao(observacao);
     }
 }

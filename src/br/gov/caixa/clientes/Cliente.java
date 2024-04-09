@@ -6,19 +6,20 @@ import java.util.Date;
 
 public abstract class Cliente {
 
-    private int id;
+    private long id;
     private String nome;
     private Date dataCadastro;
     private Status status;
 
-    public Cliente(int id, String nome, Status status) {
+    public Cliente(long id, String nome, Status status) {
         this.id = id;
         this.nome = nome;
         this.dataCadastro = new Date();
         this.status = status;
+        ListaClientes.adicionarCliente(this);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

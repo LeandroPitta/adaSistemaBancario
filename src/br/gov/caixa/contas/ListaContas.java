@@ -11,7 +11,7 @@ public abstract class ListaContas {
         contas.add(conta);
     }
 
-    public static List<Conta> getContas() {
+    public static List<Conta> getListaContas() {
         return contas;
     }
 }
