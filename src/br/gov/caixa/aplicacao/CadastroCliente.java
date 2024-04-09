@@ -3,13 +3,14 @@ package br.gov.caixa.aplicacao;
 import br.gov.caixa.clientes.*;
 import br.gov.caixa.enums.ClassificacaoCliente;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public abstract class CadastroCliente {
     public static void cadastrarNovoCliente() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Vamos iniciar o cadastro do cliente!\n\nDigite o CPF ou CNPJ (somente números): ");
+        System.out.print("\nVamos iniciar o cadastro do cliente!\nDigite o CPF ou CNPJ (somente números): ");
         long id = scanner.nextLong();
         scanner.nextLine();
 
@@ -22,14 +23,18 @@ public abstract class CadastroCliente {
 
         System.out.print("Digite o nome ou razão social do cliente: ");
         String nome = scanner.nextLine();
+        System.out.println();
 
-        System.out.println("Digite o numero da opção de classificação do cliente: \n 1 - Cliente PF\n 2 - Cliente PJ");
+        System.out.println("Escolha uma opção de classificação do cliente:");
+        System.out.print(ClassificacaoCliente.imprimirOpcoes());
+        System.out.print("Digite seu número: ");
         ClassificacaoCliente classificacao = ClassificacaoCliente.fromInteger(scanner.nextInt());
 
         try {
             System.out.println(classificacao.instanciarCliente(id, nome));
-        } catch (IllegalArgumentException ex) {
-            System.out.println("\nNão foi digitado uma classificação valida.\n");
+        } catch (NullPointerException ex) {
+            System.out.println("\nNão foi selecionado uma classificação valida.\n");
+            CadastroCliente.cadastrarNovoCliente();
         }
     }
 }

@@ -9,10 +9,11 @@ public class Main {
         String retornarInicio;
 
         do {
-            System.out.println("\n\n\n##############################");
+            System.out.println("\n##############################");
             System.out.println("#### Ada Sistema Bancário ####");
-            System.out.println("##############################\n\n");
-            CadastroCliente.cadastrarNovoCliente();
+            System.out.println("##############################\n");
+
+            MenuInicio.abrirMenu();
 
             System.out.println("Deseja retornar a tela inicial? (sim/não)");
             retornarInicio = scanner.nextLine().toLowerCase();
