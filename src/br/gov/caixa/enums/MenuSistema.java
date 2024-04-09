@@ -1,6 +1,7 @@
 package br.gov.caixa.enums;
 
 import br.gov.caixa.aplicacao.CadastroCliente;
+import br.gov.caixa.aplicacao.RelatorioCliente;
 
 public enum MenuSistema {
     CADASTRAR_CLIENTE {
@@ -57,7 +58,9 @@ public enum MenuSistema {
         }
 
         @Override
-        public void opcaoSelecionada() {}
+        public void opcaoSelecionada() {
+            System.out.println(RelatorioCliente.gerarRelatorio());
+        }
     };
 
     public abstract String opcaoMenu();
