@@ -1,13 +1,15 @@
 package br.gov.caixa.enums;
 
 import br.gov.caixa.aplicacao.CadastroCliente;
-import br.gov.caixa.aplicacao.RelatorioCliente;
+import br.gov.caixa.aplicacao.MenuInicio;
+
+import java.util.Scanner;
 
 public enum MenuSistema {
     CADASTRAR_CLIENTE {
         @Override
         public String opcaoMenu() {
-            return "1 - Cadastrar Cliente";
+            return "1 - Cadastrar cliente";
         }
 
         @Override
@@ -18,7 +20,7 @@ public enum MenuSistema {
     CONSULTAR_CLIENTE {
         @Override
         public String opcaoMenu() {
-            return "2 - Consulta/Manutenção do Cliente";
+            return "2 - Consulta e manutenção do cliente";
         }
 
         @Override
@@ -27,7 +29,7 @@ public enum MenuSistema {
     CONSULTAR_CONTA {
         @Override
         public String opcaoMenu() {
-            return "3 - Consulta/Manutenção da Conta";
+            return "3 - Consulta, manutenção e operações da conta";
         }
 
         @Override
@@ -36,16 +38,7 @@ public enum MenuSistema {
     ABRIR_POUPANCA {
         @Override
         public String opcaoMenu() {
-            return "4 - Abrir Conta Poupança";
-        }
-
-        @Override
-        public void opcaoSelecionada() {}
-    },
-    INVESTIR {
-        @Override
-        public String opcaoMenu() {
-            return "5 - Investir";
+            return "4 - Abrir conta poupança";
         }
 
         @Override
@@ -54,12 +47,24 @@ public enum MenuSistema {
     RELATORIOS {
         @Override
         public String opcaoMenu() {
-            return "6 - Relatórios";
+            return "5 - Relatórios";
         }
 
         @Override
         public void opcaoSelecionada() {
-            System.out.println(RelatorioCliente.gerarRelatorio());
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("\n");
+            System.out.print(MenuRelatorios.imprimirOpcoes());
+            System.out.print("Para selecionar uma opção, digite seu número: ");
+            MenuRelatorios relatorios = MenuRelatorios.fromInteger(scanner.nextInt());
+            try {
+                relatorios.opcaoSelecionada();
+            } catch (NullPointerException ex) {
+                System.out.println("\nNão foi selecionado uma classificação valida.");
+                MenuInicio.abrirMenu();
+            }
+
         }
     };
 
@@ -68,14 +73,13 @@ public enum MenuSistema {
     public abstract void opcaoSelecionada();
 
     public static String imprimirOpcoes() {
-        StringBuilder opcoesClassificacao = new StringBuilder();
+        StringBuilder opcao = new StringBuilder();
 
         for (int i = 0; i <= MenuSistema.values().length - 1; i++) {
-            opcoesClassificacao = opcoesClassificacao.append(MenuSistema.values()[i].opcaoMenu());
-            opcoesClassificacao = opcoesClassificacao.append("\n");
+            opcao.append(MenuSistema.values()[i].opcaoMenu()).append("\n");
         }
 
-        return opcoesClassificacao.toString();
+        return opcao.toString();
     }
 
     public static MenuSistema fromInteger(int menuSistema) {

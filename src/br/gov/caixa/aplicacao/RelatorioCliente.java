@@ -6,9 +6,9 @@ import br.gov.caixa.contas.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RelatorioCliente {
+public class RelatorioCliente {
 
-    public static String gerarRelatorio() {
+    public String gerarRelatorio() {
         StringBuilder relatorio = new StringBuilder();
 
         for (Cliente cliente : ListaClientes.getClientes()) {
@@ -37,7 +37,7 @@ public abstract class RelatorioCliente {
                     relatorio.append("  Data de abertura: ").append(conta.getDataAtualizacao()).append("\n");
                     relatorio.append("  Saldo: ").append(conta.getSaldo()).append("\n");
                 }
-                relatorio.append("\n");
+                relatorio.append("-------------------------------------------------------------------------------\n\n");
             }
         }
 

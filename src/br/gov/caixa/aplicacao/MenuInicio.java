@@ -13,10 +13,9 @@ public abstract class MenuInicio {
         System.out.println("#### Ada Sistema Bancário ####");
         System.out.println("##############################\n");
 
-        System.out.println(MenuSistema.imprimirOpcoes());
-        System.out.print("Selecione uma opção, digite seu número: ");
+        System.out.print(MenuSistema.imprimirOpcoes());
+        System.out.print("Para selecionar uma opção, digite seu número: ");
         MenuSistema menu = MenuSistema.fromInteger(scanner.nextInt());
-
         try {
             menu.opcaoSelecionada();
         } catch (NullPointerException ex) {
