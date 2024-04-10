@@ -37,7 +37,19 @@ public enum MenuInicial {
         }
 
         @Override
-        public void opcaoSelecionada() {}
+        public void opcaoSelecionada() {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("\n");
+            System.out.print(MenuOperacaoConta.imprimirOpcoes());
+            System.out.print("Para selecionar uma opção, digite seu número: ");
+            MenuOperacaoConta operacoes = MenuOperacaoConta.fromInteger(scanner.nextInt());
+            try {
+                operacoes.opcaoSelecionada();
+            } catch (NullPointerException ex) {
+                System.out.println("\nNão foi selecionado uma opção valida.");
+                MenuInicio.abrirMenu();
+            }
+        }
     },
     ABRIR_POUPANCA {
         @Override
@@ -59,7 +71,6 @@ public enum MenuInicial {
         @Override
         public void opcaoSelecionada() {
             Scanner scanner = new Scanner(System.in);
-
             System.out.println("\n");
             System.out.print(MenuRelatorios.imprimirOpcoes());
             System.out.print("Para selecionar uma opção, digite seu número: ");
@@ -70,7 +81,6 @@ public enum MenuInicial {
                 System.out.println("\nNão foi selecionado uma classificação valida.");
                 MenuInicio.abrirMenu();
             }
-
         }
     };
 
@@ -81,8 +91,8 @@ public enum MenuInicial {
     public static String imprimirOpcoes() {
         StringBuilder opcao = new StringBuilder();
 
-        for (int i = 0; i <= MenuInicial.values().length - 1; i++) {
-            opcao.append(MenuInicial.values()[i].opcaoMenu()).append("\n");
+        for (int i = 0; i <= values().length - 1; i++) {
+            opcao.append(values()[i].opcaoMenu()).append("\n");
         }
 
         return opcao.toString();
