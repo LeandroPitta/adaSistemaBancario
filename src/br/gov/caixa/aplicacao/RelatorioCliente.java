@@ -28,6 +28,7 @@ public class RelatorioCliente {
 
                 relatorio.append("Status: ").append(cliente.getStatus()).append("\n");
                 for (Conta conta : contasCliente) {
+                    relatorio.append("  --------").append("\n");
                     relatorio.append("  Conta: ").append(conta.getId()).append("\n");
 
                     String[] tipoSplit = conta.getClass().toString().split("\\.");

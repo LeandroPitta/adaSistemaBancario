@@ -1,11 +1,13 @@
 package br.gov.caixa.enums;
 
+import br.gov.caixa.aplicacao.AberturaPoupanca;
 import br.gov.caixa.aplicacao.CadastroCliente;
+import br.gov.caixa.aplicacao.ConsultaManutencaoCliente;
 import br.gov.caixa.aplicacao.MenuInicio;
 
 import java.util.Scanner;
 
-public enum MenuSistema {
+public enum MenuInicial {
     CADASTRAR_CLIENTE {
         @Override
         public String opcaoMenu() {
@@ -20,16 +22,18 @@ public enum MenuSistema {
     CONSULTAR_CLIENTE {
         @Override
         public String opcaoMenu() {
-            return "2 - Consulta e manutenção do cliente";
+            return "2 - Consultar cliente";
         }
 
         @Override
-        public void opcaoSelecionada() {}
+        public void opcaoSelecionada() {
+            new ConsultaManutencaoCliente().consultarCliente();
+        }
     },
     CONSULTAR_CONTA {
         @Override
         public String opcaoMenu() {
-            return "3 - Consulta, manutenção e operações da conta";
+            return "3 - Consulta e operações de conta";
         }
 
         @Override
@@ -42,7 +46,9 @@ public enum MenuSistema {
         }
 
         @Override
-        public void opcaoSelecionada() {}
+        public void opcaoSelecionada() {
+            new AberturaPoupanca().abrirPoupanca();
+        }
     },
     RELATORIOS {
         @Override
@@ -75,15 +81,15 @@ public enum MenuSistema {
     public static String imprimirOpcoes() {
         StringBuilder opcao = new StringBuilder();
 
-        for (int i = 0; i <= MenuSistema.values().length - 1; i++) {
-            opcao.append(MenuSistema.values()[i].opcaoMenu()).append("\n");
+        for (int i = 0; i <= MenuInicial.values().length - 1; i++) {
+            opcao.append(MenuInicial.values()[i].opcaoMenu()).append("\n");
         }
 
         return opcao.toString();
     }
 
-    public static MenuSistema fromInteger(int menuSistema) {
-        for (MenuSistema menu : values()) {
+    public static MenuInicial fromInteger(int menuSistema) {
+        for (MenuInicial menu : values()) {
             if (menu.ordinal() + 1 == menuSistema) {
                 return menu;
             }

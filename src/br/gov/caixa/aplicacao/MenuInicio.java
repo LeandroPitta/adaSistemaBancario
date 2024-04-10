@@ -1,6 +1,6 @@
 package br.gov.caixa.aplicacao;
 
-import br.gov.caixa.enums.MenuSistema;
+import br.gov.caixa.enums.MenuInicial;
 
 import java.util.Scanner;
 
@@ -13,9 +13,9 @@ public abstract class MenuInicio {
         System.out.println("#### Ada Sistema Bancário ####");
         System.out.println("##############################\n");
 
-        System.out.print(MenuSistema.imprimirOpcoes());
+        System.out.print(MenuInicial.imprimirOpcoes());
         System.out.print("Para selecionar uma opção, digite seu número: ");
-        MenuSistema menu = MenuSistema.fromInteger(scanner.nextInt());
+        MenuInicial menu = MenuInicial.fromInteger(scanner.nextInt());
         try {
             menu.opcaoSelecionada();
         } catch (NullPointerException ex) {

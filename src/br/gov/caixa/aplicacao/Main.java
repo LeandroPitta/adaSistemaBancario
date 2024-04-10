@@ -6,15 +6,17 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        String retornarInicio;
+        int retornarInicio;
 
         do {
             MenuInicio.abrirMenu();
 
-            System.out.println("\nDeseja retornar a tela inicial? (sim/não)");
-            retornarInicio = scanner.nextLine().toLowerCase();
+            System.out.println("\n1 - Retornar ao menu inicial");
+            System.out.println("2 - Encerrar o programa");
+            System.out.print("Digite o número da opção desejada: ");
+            retornarInicio = scanner.nextInt();
 
-        } while (retornarInicio.equals("sim"));
+        } while (retornarInicio == 1);
 
         scanner.close();
     }
