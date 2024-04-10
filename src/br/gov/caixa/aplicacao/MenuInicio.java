@@ -1,6 +1,6 @@
 package br.gov.caixa.aplicacao;
 
-import br.gov.caixa.enums.MenuInicial;
+import br.gov.caixa.aplicacao.menu_enums.MenuInicial;
 
 import java.util.Scanner;
 

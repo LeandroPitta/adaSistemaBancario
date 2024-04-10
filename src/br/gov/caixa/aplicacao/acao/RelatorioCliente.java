@@ -1,4 +1,4 @@
-package br.gov.caixa.aplicacao;
+package br.gov.caixa.aplicacao.acao;
 
 import br.gov.caixa.clientes.*;
 import br.gov.caixa.contas.*;

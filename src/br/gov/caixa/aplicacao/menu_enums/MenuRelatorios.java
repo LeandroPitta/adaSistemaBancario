@@ -1,7 +1,7 @@
-package br.gov.caixa.enums;
+package br.gov.caixa.aplicacao.menu_enums;
 
-import br.gov.caixa.aplicacao.RelatorioCliente;
-import br.gov.caixa.aplicacao.RelatorioHistoricoOperacoes;
+import br.gov.caixa.aplicacao.acao.RelatorioCliente;
+import br.gov.caixa.aplicacao.acao.RelatorioHistoricoOperacoes;
 
 public enum MenuRelatorios {
     RELATORIO_CLIENTES{

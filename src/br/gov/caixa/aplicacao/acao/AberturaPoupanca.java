@@ -1,4 +1,4 @@
-package br.gov.caixa.aplicacao;
+package br.gov.caixa.aplicacao.acao;
 
 import br.gov.caixa.contas.Conta;
 import br.gov.caixa.contas.ContaPoupanca;

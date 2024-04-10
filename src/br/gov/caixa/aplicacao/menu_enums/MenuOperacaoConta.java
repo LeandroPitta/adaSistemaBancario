@@ -1,4 +1,10 @@
-package br.gov.caixa.enums;
+package br.gov.caixa.aplicacao.menu_enums;
+
+import br.gov.caixa.aplicacao.acao.ConsultarSaldo;
+import br.gov.caixa.aplicacao.acao.Depositar;
+import br.gov.caixa.aplicacao.acao.Sacar;
+
+import java.util.Scanner;
 
 public enum MenuOperacaoConta {
     CONSULTA_SALDO {
@@ -8,7 +14,9 @@ public enum MenuOperacaoConta {
         }
 
         @Override
-        public void opcaoSelecionada() {}
+        public void opcaoSelecionada() {
+            ConsultarSaldo.consultarSaldo();
+        }
     },
     SAQUE {
         @Override
@@ -17,7 +25,9 @@ public enum MenuOperacaoConta {
         }
 
         @Override
-        public void opcaoSelecionada() {}
+        public void opcaoSelecionada() {
+            Sacar.sacar();
+        }
     },
     DEPOSITO {
         @Override
@@ -26,7 +36,9 @@ public enum MenuOperacaoConta {
         }
 
         @Override
-        public void opcaoSelecionada() {}
+        public void opcaoSelecionada() {
+            Depositar.depositar();
+        }
     },
     TRANSFERENCIA {
         @Override

@@ -1,8 +1,8 @@
-package br.gov.caixa.enums;
+package br.gov.caixa.aplicacao.menu_enums;
 
-import br.gov.caixa.aplicacao.AberturaPoupanca;
-import br.gov.caixa.aplicacao.CadastroCliente;
-import br.gov.caixa.aplicacao.ConsultaManutencaoCliente;
+import br.gov.caixa.aplicacao.acao.AberturaPoupanca;
+import br.gov.caixa.aplicacao.acao.CadastroCliente;
+import br.gov.caixa.aplicacao.acao.ConsultaManutencaoCliente;
 import br.gov.caixa.aplicacao.MenuInicio;
 
 import java.util.Scanner;

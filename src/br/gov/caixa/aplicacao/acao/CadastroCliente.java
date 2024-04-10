@@ -1,9 +1,8 @@
-package br.gov.caixa.aplicacao;
+package br.gov.caixa.aplicacao.acao;
 
 import br.gov.caixa.clientes.*;
-import br.gov.caixa.enums.ClassificacaoCliente;
+import br.gov.caixa.aplicacao.menu_enums.ClassificacaoCliente;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public abstract class CadastroCliente {
