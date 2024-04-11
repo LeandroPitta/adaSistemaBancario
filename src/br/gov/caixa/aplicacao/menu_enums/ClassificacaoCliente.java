@@ -9,10 +9,7 @@ import br.gov.caixa.enums.TipoOperacaoConta;
 import java.util.Date;
 
 public enum ClassificacaoCliente {
-    CLIENTE_PF {
-
-        @Override
-        public String opcaoMenu() {return "1 - Cliente PF";}
+    CLIENTE_PF("1 - Cliente PF") {
 
         @Override
         public String instanciarCliente(long id, String nome) {
@@ -26,10 +23,7 @@ public enum ClassificacaoCliente {
             return "\nCliente e Conta cadastrados com sucesso!\n";
         }
     },
-    CLIENTE_PJ {
-
-        @Override
-        public String opcaoMenu() {return "2 - Cliente PJ";}
+    CLIENTE_PJ("2 - Cliente PJ") {
 
         @Override
         public String instanciarCliente(long id, String nome) {
@@ -44,7 +38,11 @@ public enum ClassificacaoCliente {
         }
     };
 
-    public abstract String opcaoMenu();
+    public final String opcaoMenu;
+
+    ClassificacaoCliente(String opcaoMenu) {
+        this.opcaoMenu = opcaoMenu;
+    }
 
     public abstract String instanciarCliente(long id, String nome);
 
@@ -52,10 +50,8 @@ public enum ClassificacaoCliente {
         StringBuilder opcoesClassificacao = new StringBuilder();
 
         for (int i = 0; i <= ClassificacaoCliente.values().length - 1; i++) {
-            opcoesClassificacao = opcoesClassificacao.append(ClassificacaoCliente.values()[i].opcaoMenu());
-            opcoesClassificacao = opcoesClassificacao.append("\n");
+            opcoesClassificacao = opcoesClassificacao.append(values()[i].opcaoMenu).append("\n");
         }
-
         return opcoesClassificacao.toString();
     }
 

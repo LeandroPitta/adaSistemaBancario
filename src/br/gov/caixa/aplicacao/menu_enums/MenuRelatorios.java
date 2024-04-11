@@ -4,22 +4,14 @@ import br.gov.caixa.aplicacao.acao.RelatorioCliente;
 import br.gov.caixa.aplicacao.acao.RelatorioHistoricoOperacoes;
 
 public enum MenuRelatorios {
-    RELATORIO_CLIENTES{
-        @Override
-        public String opcaoMenu() {
-            return "1 - Relatório de Clientes";
-        }
+    RELATORIO_CLIENTES("1 - Relatório de Clientes") {
 
         @Override
         public void opcaoSelecionada() {
             System.out.println(new RelatorioCliente().gerarRelatorio());
         }
     },
-    HISTORICO_OPERACOES{
-        @Override
-        public String opcaoMenu() {
-            return "2 - Histórico de Operações";
-        }
+    HISTORICO_OPERACOE("2 - Histórico de Operações") {
 
         @Override
         public void opcaoSelecionada() {
@@ -27,7 +19,11 @@ public enum MenuRelatorios {
         }
     };
 
-    public abstract String opcaoMenu();
+    public final String opcaoMenu;
+
+    MenuRelatorios(String opcaoMenu) {
+        this.opcaoMenu = opcaoMenu;
+    }
 
     public abstract void opcaoSelecionada();
 
@@ -35,7 +31,7 @@ public enum MenuRelatorios {
         StringBuilder opcao = new StringBuilder();
 
         for (int i = 0; i <= values().length - 1; i++) {
-            opcao.append(values()[i].opcaoMenu()).append("\n");
+            opcao.append(values()[i].opcaoMenu).append("\n");
         }
 
         return opcao.toString();

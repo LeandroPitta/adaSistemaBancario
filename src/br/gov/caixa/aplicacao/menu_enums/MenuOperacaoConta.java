@@ -7,59 +7,43 @@ import br.gov.caixa.aplicacao.acao.Sacar;
 import java.util.Scanner;
 
 public enum MenuOperacaoConta {
-    CONSULTA_SALDO {
-        @Override
-        public String opcaoMenu() {
-            return "1 - Consultar Saldo";
-        }
+    CONSULTA_SALDO("1 - Consultar Saldo") {
 
         @Override
         public void opcaoSelecionada() {
             ConsultarSaldo.consultarSaldo();
         }
     },
-    SAQUE {
-        @Override
-        public String opcaoMenu() {
-            return "2 - Sacar";
-        }
+    SAQUE("2 - Sacar") {
 
         @Override
         public void opcaoSelecionada() {
             Sacar.sacar();
         }
     },
-    DEPOSITO {
-        @Override
-        public String opcaoMenu() {
-            return "3 - Depositar";
-        }
+    DEPOSITO("3 - Depositar") {
 
         @Override
         public void opcaoSelecionada() {
             Depositar.depositar();
         }
     },
-    TRANSFERENCIA {
-        @Override
-        public String opcaoMenu() {
-            return "4 - Transferir";
-        }
+    TRANSFERENCIA("4 - Transferir") {
 
         @Override
         public void opcaoSelecionada() {}
     },
-    INVESTIMENTO {
-        @Override
-        public String opcaoMenu() {
-            return "5 - Investir";
-        }
+    INVESTIMENTO("5 - Investir") {
 
         @Override
         public void opcaoSelecionada() {}
     };
 
-    public abstract String opcaoMenu();
+    public final String opcaoMenu;
+
+    MenuOperacaoConta(String opcaoMenu) {
+        this.opcaoMenu = opcaoMenu;
+    }
 
     public abstract void opcaoSelecionada();
 
@@ -67,9 +51,8 @@ public enum MenuOperacaoConta {
         StringBuilder opcao = new StringBuilder();
 
         for (int i = 0; i <= values().length - 1; i++) {
-            opcao.append(values()[i].opcaoMenu()).append("\n");
+            opcao.append(values()[i].opcaoMenu).append("\n");
         }
-
         return opcao.toString();
     }
 

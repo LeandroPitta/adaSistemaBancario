@@ -7,34 +7,22 @@ import br.gov.caixa.aplicacao.MenuInicio;
 
 import java.util.Scanner;
 
-public enum MenuInicial {
-    CADASTRAR_CLIENTE {
-        @Override
-        public String opcaoMenu() {
-            return "1 - Cadastrar cliente";
-        }
+public enum MenuInicial{
+    CADASTRAR_CLIENTE("1 - Cadastrar cliente")  {
 
         @Override
         public void opcaoSelecionada() {
             CadastroCliente.cadastrarNovoCliente();
         }
     },
-    CONSULTAR_CLIENTE {
-        @Override
-        public String opcaoMenu() {
-            return "2 - Consultar cliente";
-        }
+    CONSULTAR_CLIENTE("2 - Consultar cliente") {
 
         @Override
         public void opcaoSelecionada() {
             new ConsultaManutencaoCliente().consultarCliente();
         }
     },
-    CONSULTAR_CONTA {
-        @Override
-        public String opcaoMenu() {
-            return "3 - Consulta e operações de conta";
-        }
+    CONSULTAR_CONTA("3 - Consulta e operações de conta") {
 
         @Override
         public void opcaoSelecionada() {
@@ -51,22 +39,14 @@ public enum MenuInicial {
             }
         }
     },
-    ABRIR_POUPANCA {
-        @Override
-        public String opcaoMenu() {
-            return "4 - Abrir conta poupança";
-        }
+    ABRIR_POUPANCA("4 - Abrir conta poupança") {
 
         @Override
         public void opcaoSelecionada() {
             new AberturaPoupanca().abrirPoupanca();
         }
     },
-    RELATORIOS {
-        @Override
-        public String opcaoMenu() {
-            return "5 - Relatórios";
-        }
+    RELATORIOS("5 - Relatórios") {
 
         @Override
         public void opcaoSelecionada() {
@@ -84,7 +64,11 @@ public enum MenuInicial {
         }
     };
 
-    public abstract String opcaoMenu();
+    public final String opcaoMenu;
+
+    MenuInicial(String opcaoMenu) {
+        this.opcaoMenu = opcaoMenu;
+    }
 
     public abstract void opcaoSelecionada();
 
@@ -92,7 +76,7 @@ public enum MenuInicial {
         StringBuilder opcao = new StringBuilder();
 
         for (int i = 0; i <= values().length - 1; i++) {
-            opcao.append(values()[i].opcaoMenu()).append("\n");
+            opcao.append(values()[i].opcaoMenu).append("\n");
         }
 
         return opcao.toString();
