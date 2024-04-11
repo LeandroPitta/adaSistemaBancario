@@ -2,7 +2,6 @@ package br.gov.caixa.aplicacao.acao;
 
 import br.gov.caixa.contas.Conta;
 import br.gov.caixa.contas.ListaContas;
-import br.gov.caixa.contas.services.historico_operacoes.HistoricoAberturaConta;
 import br.gov.caixa.contas.services.historico_operacoes.HistoricoOperacaoDeposito;
 import br.gov.caixa.contas.services.operacoes.Deposito;
 import br.gov.caixa.contas.services.operacoes.DepositoPadrao;
