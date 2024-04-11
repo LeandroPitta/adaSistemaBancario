@@ -1,9 +1,6 @@
 package br.gov.caixa.aplicacao.menu_enums;
 
-import br.gov.caixa.aplicacao.acao.ConsultarSaldo;
-import br.gov.caixa.aplicacao.acao.Depositar;
-import br.gov.caixa.aplicacao.acao.Sacar;
-import br.gov.caixa.aplicacao.acao.Transferir;
+import br.gov.caixa.aplicacao.acao.*;
 
 import java.util.Scanner;
 
@@ -39,7 +36,9 @@ public enum MenuOperacaoConta {
     INVESTIMENTO("5 - Investir") {
 
         @Override
-        public void opcaoSelecionada() {}
+        public void opcaoSelecionada() {
+            Investir.investir();
+        }
     };
 
     public final String opcaoMenu;
