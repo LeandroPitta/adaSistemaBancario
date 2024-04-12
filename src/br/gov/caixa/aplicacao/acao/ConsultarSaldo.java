@@ -1,10 +1,7 @@
 package br.gov.caixa.aplicacao.acao;
 
-import br.gov.caixa.clientes.Cliente;
-import br.gov.caixa.clientes.ListaClientes;
 import br.gov.caixa.contas.Conta;
 import br.gov.caixa.contas.ListaContas;
-import br.gov.caixa.contas.services.historico_operacoes.HistoricoAberturaConta;
 import br.gov.caixa.contas.services.historico_operacoes.HistoricoOperacaoSaldo;
 import br.gov.caixa.enums.TipoOperacaoConta;
 

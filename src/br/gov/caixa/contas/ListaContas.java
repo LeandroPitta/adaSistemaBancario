@@ -3,7 +3,7 @@ package br.gov.caixa.contas;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ListaContas {
+public class ListaContas {
 
     private static List<Conta> contas = new ArrayList<>();
 

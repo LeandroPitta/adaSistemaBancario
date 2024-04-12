@@ -4,8 +4,6 @@ import br.gov.caixa.contas.Conta;
 import br.gov.caixa.contas.ContaInvestimento;
 import br.gov.caixa.contas.ListaContas;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class RetornarContaInvestimento {
 

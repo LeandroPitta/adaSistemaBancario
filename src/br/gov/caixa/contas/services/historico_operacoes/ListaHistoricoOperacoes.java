@@ -3,7 +3,7 @@ package br.gov.caixa.contas.services.historico_operacoes;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ListaHistoricoOperacoes {
+public class ListaHistoricoOperacoes {
 
     private static List<HistoricoOperacao> historicoOperacoes = new ArrayList<>();
 
