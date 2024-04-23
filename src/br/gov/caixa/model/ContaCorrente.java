@@ -1,7 +1,7 @@
 package br.gov.caixa.model;
 
-import br.gov.caixa.util.SequenciaId;
-import br.gov.caixa.util.Status;
+import br.gov.caixa.model.util.SequenciaId;
+import br.gov.caixa.service.Status;
 
 import java.time.LocalDate;
 
@@ -9,5 +9,15 @@ public record ContaCorrente(long id, double saldo, LocalDate dataAtualizacao, St
 
     public ContaCorrente(long idCliente) {
         this(SequenciaId.proximoId(), 0, LocalDate.now(), Status.ATIVO, idCliente);
+    }
+
+    @Override
+    public long getId() {
+        return id;
+    }
+
+    @Override
+    public long getIdCliente() {
+        return idCliente;
     }
 }

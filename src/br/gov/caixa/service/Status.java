@@ -1,4 +1,4 @@
-package br.gov.caixa.util;
+package br.gov.caixa.service;
 
 public enum Status {
 

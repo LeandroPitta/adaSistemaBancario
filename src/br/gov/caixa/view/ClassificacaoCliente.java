@@ -1,8 +1,8 @@
 package br.gov.caixa.view;
 
 import br.gov.caixa.service.historico_operacoes.HistoricoAberturaConta;
-import br.gov.caixa.util.Status;
-import br.gov.caixa.util.TipoOperacaoConta;
+import br.gov.caixa.service.Status;
+import br.gov.caixa.service.TipoOperacaoConta;
 
 import java.util.Date;
 

@@ -3,7 +3,7 @@ package br.gov.caixa.controller;
 import br.gov.caixa.service.historico_operacoes.HistoricoOperacaoDeposito;
 import br.gov.caixa.service.operacoes.Deposito;
 import br.gov.caixa.service.operacoes.DepositoPadrao;
-import br.gov.caixa.util.TipoOperacaoConta;
+import br.gov.caixa.service.TipoOperacaoConta;
 
 import java.util.Date;
 import java.util.Scanner;

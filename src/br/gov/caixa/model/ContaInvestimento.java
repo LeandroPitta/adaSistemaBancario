@@ -1,4 +1,23 @@
 package br.gov.caixa.model;
 
-public record ContaInvestimento() {
+import br.gov.caixa.model.util.SequenciaId;
+import br.gov.caixa.service.Status;
+
+import java.time.LocalDate;
+
+public record ContaInvestimento(long id, double saldo, LocalDate dataAtualizacao, Status status, long idCliente) implements Conta{
+
+    public ContaInvestimento(long idCliente) {
+        this(SequenciaId.proximoId(), 0, LocalDate.now(), Status.ATIVO, idCliente);
+    }
+
+    @Override
+    public long getId() {
+        return id;
+    }
+
+    @Override
+    public long getIdCliente() {
+        return idCliente;
+    }
 }
