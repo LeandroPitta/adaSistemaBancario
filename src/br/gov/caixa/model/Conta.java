@@ -3,5 +3,7 @@ package br.gov.caixa.model;
 public interface Conta {
 
     long getId();
-    long getIdCliente();
+    double getSaldo();
+    void setSaldo(double saldo);
+    Cliente getCliente();
 }

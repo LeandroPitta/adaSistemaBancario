@@ -1,6 +1,6 @@
 package br.gov.caixa.controller;
 
-import br.gov.caixa.service.RetornarContaInvestimento;
+import br.gov.caixa.service.RetornaContaInvestimento;
 import br.gov.caixa.service.historico_operacoes.HistoricoOperacaoInvestimento;
 import br.gov.caixa.service.operacoes.*;
 import br.gov.caixa.service.TipoOperacaoConta;
@@ -22,7 +22,7 @@ public class Investir {
             if (contaCorrente.getId() == idCc) {
                 System.out.print("\nQual valor do investimento (0,00): ");
                 double valor = scanner.nextDouble();
-                Conta contaInvestimento = RetornarContaInvestimento.retornarConta(contaCorrente.getIdCliente());
+                Conta contaInvestimento = RetornaContaInvestimento.retornarConta(contaCorrente.getIdCliente());
                 Investimento investimento = new InvestimentoPadrao();
                 investimento.investir(contaCorrente, valor, contaInvestimento);
                 new HistoricoOperacaoInvestimento(new Date(), TipoOperacaoConta.INVESTIMENTO, valor, valor, contaCorrente, "Investimento realizado com sucesso");

@@ -1,14 +1,15 @@
 package br.gov.caixa.model;
 
+import br.gov.caixa.model.enums.TipoClienteEnum;
 import br.gov.caixa.model.util.SequenciaId;
-import br.gov.caixa.service.Status;
+import br.gov.caixa.model.enums.StatusEnum;
 
 import java.time.LocalDate;
 
-public record ContaInvestimento(long id, double saldo, LocalDate dataAtualizacao, Status status, long idCliente) implements Conta{
+public record ContaInvestimento(long id, double saldo, LocalDate dataAtualizacao, StatusEnum statusEnum, Cliente cliente) implements Conta{
 
-    public ContaInvestimento(long idCliente) {
-        this(SequenciaId.proximoId(), 0, LocalDate.now(), Status.ATIVO, idCliente);
+    public ContaInvestimento(Cliente cliente) {
+        this(SequenciaId.proximoId(), 0, LocalDate.now(), StatusEnum.ATIVO, cliente);
     }
 
     @Override
@@ -17,7 +18,17 @@ public record ContaInvestimento(long id, double saldo, LocalDate dataAtualizacao
     }
 
     @Override
-    public long getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    @Override
+    public double getSaldo() {
+        return saldo;
+    }
+
+    @Override
+    public void setSaldo(double novoSaldo) {
+        new ContaInvestimento(this.id, novoSaldo, this.dataAtualizacao, this.statusEnum, this.cliente);
     }
 }

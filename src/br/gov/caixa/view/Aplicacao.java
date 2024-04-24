@@ -1,6 +1,6 @@
 package br.gov.caixa.view;
 
-import br.gov.caixa.service.AplicaRendimentoMensal;
+import br.gov.caixa.service.RendimentoMensal;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public class Aplicacao {
 
         Scanner scanner = new Scanner(System.in);
         int retornarInicio;
-        AplicaRendimentoMensal.agendaRendimentoInvestimento();
+        RendimentoMensal.agendaRendimentoInvestimento();
 
         do {
             MenuInicio.abrirMenu();

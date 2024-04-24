@@ -1,6 +1,5 @@
 package br.gov.caixa.controller;
 
-import br.gov.caixa.service.ConferenciaInstanciaCliente;
 import br.gov.caixa.service.historico_operacoes.HistoricoOperacaoSaque;
 import br.gov.caixa.service.operacoes.*;
 import br.gov.caixa.service.TipoOperacaoConta;
