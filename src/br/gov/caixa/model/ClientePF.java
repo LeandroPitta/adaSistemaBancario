@@ -1,19 +1,13 @@
 package br.gov.caixa.model;
 
-import br.gov.caixa.model.enums.TipoClienteEnum;
 import br.gov.caixa.model.enums.StatusEnum;
+import br.gov.caixa.model.enums.TipoClienteEnum;
 
 import java.time.LocalDate;
 
-public record ClientePF(long id, String nome, StatusEnum statusEnum, TipoClienteEnum tipoClienteEnum, LocalDate dataCadastro) implements Cliente {
+public class ClientePF extends Cliente {
 
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public TipoClienteEnum getTipoCliente() {
-        return tipoClienteEnum;
+    public ClientePF(long id, String nome, StatusEnum statusEnum, TipoClienteEnum tipoClienteEnum, LocalDate dataCadastro) {
+        super(id, nome, statusEnum, tipoClienteEnum, dataCadastro);
     }
 }
