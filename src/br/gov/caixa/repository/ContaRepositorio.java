@@ -18,4 +18,12 @@ public class ContaRepositorio implements Repositorio<Conta> {
     public List<Conta> listar() {
         return lista;
     }
+
+    @Override
+    public Conta buscarPorId(Long id) {
+        return lista.stream()
+                .filter(conta -> conta.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 }

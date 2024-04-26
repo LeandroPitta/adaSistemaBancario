@@ -8,11 +8,16 @@ import java.util.List;
 
 public class RetornaContaInvestimento {
 
-    public static Conta retornarConta(List<Conta> contas, Long idCliente) {
-        Cliente cliente;
+    public static Conta retornarConta(Long idCliente) {
+
+        List<Conta> contas = ContaService.listarContas();
+
         return contas.stream()
                 .filter(conta -> conta.getCliente().getId() == idCliente && conta instanceof ContaInvestimento)
                 .findFirst()
-                .orElseGet(() -> new ContaInvestimento(conta.get));  //CORRIGIR POIS idCliente DEVE SER conta.getCliente()
+                .orElseGet(() -> {
+                    Cliente cliente = ClienteService.buscarCliente(idCliente);
+                    return new ContaInvestimento(cliente);
+                });
     }
 }

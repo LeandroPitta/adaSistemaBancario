@@ -1,6 +1,7 @@
-package br.gov.caixa.view;
+package br.gov.caixa;
 
 import br.gov.caixa.service.AgendaRendimentoMensal;
+import br.gov.caixa.view.MenuInicio;
 
 import java.util.Scanner;
 

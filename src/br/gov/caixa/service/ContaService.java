@@ -1,5 +1,6 @@
 package br.gov.caixa.service;
 
+import br.gov.caixa.model.Cliente;
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.repository.ContaRepositorio;
 
@@ -15,5 +16,9 @@ public class ContaService {
 
     public static List<Conta> listarContas() {
         return contaRepositorio.listar();
+    }
+
+    public static Conta buscarConta(Long id) {
+        return contaRepositorio.buscarPorId(id);
     }
 }

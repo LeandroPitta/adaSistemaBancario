@@ -1,6 +1,7 @@
 package br.gov.caixa.repository;
 
 import br.gov.caixa.model.Cliente;
+import br.gov.caixa.model.Conta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,5 +18,13 @@ public class ClienteRepositorio implements Repositorio<Cliente> {
     @Override
     public List<Cliente> listar() {
         return lista;
+    }
+
+    @Override
+    public Cliente buscarPorId(Long id) {
+        return lista.stream()
+                .filter(cliente -> cliente.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 }

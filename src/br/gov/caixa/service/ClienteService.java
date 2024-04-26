@@ -16,4 +16,8 @@ public class ClienteService {
     public static List<Cliente> listarClientes() {
         return clienteRepositorio.listar();
     }
+
+    public static Cliente buscarCliente(Long id) {
+        return clienteRepositorio.buscarPorId(id);
+    }
 }
