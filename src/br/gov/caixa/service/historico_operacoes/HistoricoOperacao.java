@@ -1,5 +1,6 @@
 package br.gov.caixa.service.historico_operacoes;
 
+import br.gov.caixa.model.Conta;
 import br.gov.caixa.service.TipoOperacaoConta;
 
 import java.util.Date;

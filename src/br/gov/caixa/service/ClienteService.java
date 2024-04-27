@@ -7,17 +7,27 @@ import java.util.List;
 
 public class ClienteService {
 
-    private static ClienteRepositorio clienteRepositorio;
+    private static ClienteService instance;
 
-    public static void adicionarCliente(Cliente cliente) {
-        clienteRepositorio.adicionar(cliente);
+    private ClienteService() {
     }
 
-    public static List<Cliente> listarClientes() {
-        return clienteRepositorio.listar();
+    public static ClienteService getInstance() {
+        if (instance == null) {
+            instance = new ClienteService();
+        }
+        return instance;
     }
 
-    public static Cliente buscarCliente(Long id) {
-        return clienteRepositorio.buscarPorId(id);
+    public void adicionarCliente(Cliente cliente) {
+        ClienteRepositorio.getInstance().adicionar(cliente);
+    }
+
+    public List<Cliente> listarClientes() {
+        return ClienteRepositorio.getInstance().listar();
+    }
+
+    public Cliente buscarCliente(Long id) {
+        return ClienteRepositorio.getInstance().buscarPorId(id);
     }
 }

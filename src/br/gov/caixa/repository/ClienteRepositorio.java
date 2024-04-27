@@ -1,7 +1,6 @@
 package br.gov.caixa.repository;
 
 import br.gov.caixa.model.Cliente;
-import br.gov.caixa.model.Conta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,17 @@ import java.util.List;
 public class ClienteRepositorio implements Repositorio<Cliente> {
 
     private List<Cliente> lista = new ArrayList<>();
+
+    private static ClienteRepositorio instance;
+
+    private ClienteRepositorio() {}
+
+    public static ClienteRepositorio getInstance() {
+        if (instance == null) {
+            instance = new ClienteRepositorio();
+        }
+        return instance;
+    }
 
     @Override
     public void adicionar(Cliente item) {

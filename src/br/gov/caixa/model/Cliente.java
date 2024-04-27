@@ -4,6 +4,7 @@ import br.gov.caixa.model.enums.StatusEnum;
 import br.gov.caixa.model.enums.TipoClienteEnum;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public abstract class Cliente {
 
@@ -12,6 +13,7 @@ public abstract class Cliente {
     private LocalDate dataCadastro;
     private TipoClienteEnum tipoClienteEnum;
     private StatusEnum statusEnum;
+    private List<Conta> contas;
 
     public Cliente(long id, String nome, StatusEnum statusEnum, TipoClienteEnum tipoClienteEnum, LocalDate dataCadastro) {
         this.id = id;
@@ -19,6 +21,7 @@ public abstract class Cliente {
         this.dataCadastro = LocalDate.now();
         this.statusEnum = statusEnum;
         this.tipoClienteEnum = tipoClienteEnum;
+        new ContaCorrente(this);
     }
 
     public long getId() {
@@ -47,6 +50,14 @@ public abstract class Cliente {
 
     public void setStatusEnum(StatusEnum statusEnum) {
         this.statusEnum = statusEnum;
+    }
+
+    public List<Conta> getContas() {
+        return contas;
+    }
+
+    public void addEmContas(Conta conta) {
+        this.contas.add(conta);
     }
 }
 

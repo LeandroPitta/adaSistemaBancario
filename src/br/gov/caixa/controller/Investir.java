@@ -1,6 +1,5 @@
 package br.gov.caixa.controller;
 
-import br.gov.caixa.service.RetornaContaInvestimento;
 import br.gov.caixa.service.historico_operacoes.HistoricoOperacaoInvestimento;
 import br.gov.caixa.service.operacoes.*;
 import br.gov.caixa.service.TipoOperacaoConta;

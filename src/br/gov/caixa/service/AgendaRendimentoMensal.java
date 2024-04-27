@@ -1,7 +1,9 @@
 package br.gov.caixa.service;
 
 import br.gov.caixa.model.Conta;
+import br.gov.caixa.service.operacoes.factory.OpFactory;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -11,8 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 public class AgendaRendimentoMensal {
 
-    private static final double TAXARENDIMENTOPF = 0.01;
-    private static final double TAXARENDIMENTOPJ = 0.02;
+    private static final BigDecimal TAXARENDIMENTOPF = BigDecimal.valueOf(1.0001);
+    private static final BigDecimal TAXARENDIMENTOPJ = BigDecimal.valueOf(1.0002);
     private static ScheduledExecutorService agenda;
 
     public static void agendarRendimentoInvestimento() {
@@ -29,10 +31,10 @@ public class AgendaRendimentoMensal {
     }
 
     private static void render() {
-        List<Conta> contas = ContaService.listarContas();
+        List<Conta> contas = ContaService.getInstance().listarContas();
         for (Conta conta : contas) {
-            double taxaRendimento = conta.getCliente().getTipoClienteEnum().equals("CLIENTE_PF") ? TAXARENDIMENTOPF : TAXARENDIMENTOPJ;
-            double novoSaldo = conta.getSaldo() + (conta.getSaldo() * taxaRendimento);
+            BigDecimal taxaRendimento = conta.getCliente().getTipoClienteEnum().equals("CLIENTE_PF") ? TAXARENDIMENTOPF : TAXARENDIMENTOPJ;
+            BigDecimal novoSaldo = conta.getSaldo().multiply(taxaRendimento);
         }
     }
 }

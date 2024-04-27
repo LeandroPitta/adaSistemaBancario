@@ -1,6 +1,12 @@
 package br.gov.caixa.service.operacoes;
 
-public interface Transferencia {
+import br.gov.caixa.model.Cliente;
+import br.gov.caixa.model.Conta;
 
-    void transferir(Conta conta, double valorPretendido, Conta contaDestino);
+import java.math.BigDecimal;
+
+public interface Transferencia<T extends Cliente> {
+
+    void transferir(T cliente, long idContaOrigem, Conta destino, BigDecimal valor);
+
 }

@@ -9,6 +9,17 @@ public class ContaRepositorio implements Repositorio<Conta> {
 
     private List<Conta> lista = new ArrayList<>();
 
+    private static ContaRepositorio instance;
+
+    private ContaRepositorio() {}
+
+    public static ContaRepositorio getInstance() {
+        if (instance == null) {
+            instance = new ContaRepositorio();
+        }
+        return instance;
+    }
+
     @Override
     public void adicionar(Conta conta) {
         lista.add(conta);
