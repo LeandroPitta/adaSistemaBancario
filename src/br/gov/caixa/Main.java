@@ -5,7 +5,7 @@ import br.gov.caixa.view.MenuInicio;
 
 import java.util.Scanner;
 
-public class Aplicacao {
+public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);

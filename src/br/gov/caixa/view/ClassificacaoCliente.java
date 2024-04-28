@@ -1,8 +1,6 @@
 package br.gov.caixa.view;
 
-import br.gov.caixa.service.historico_operacoes.HistoricoAberturaConta;
 import br.gov.caixa.model.enums.StatusEnum;
-import br.gov.caixa.service.TipoOperacaoConta;
 
 import java.util.Date;
 

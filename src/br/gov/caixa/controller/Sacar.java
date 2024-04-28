@@ -1,8 +1,6 @@
 package br.gov.caixa.controller;
 
-import br.gov.caixa.service.historico_operacoes.HistoricoOperacaoSaque;
 import br.gov.caixa.service.operacoes.*;
-import br.gov.caixa.service.TipoOperacaoConta;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -25,7 +23,7 @@ public class Sacar {
                 if ( conferencia.equals("ClientePJ")) {
                     SaqueContaPj saque = new SaqueContaPj();
                     saque.sacar(conta, valor);
-                    new HistoricoOperacaoSaque(new Date(), TipoOperacaoConta.SAQUE, valor, saque.getValorReal(), conta, "Saque efetuado com sucesso");
+                    new HistoricoSaque(new Date(), TipoOperacaoConta.SAQUE, valor, saque.getValorReal(), conta, "Saque efetuado com sucesso");
                     System.out.println("\nSaque realizado com sucesso! Foi cobrado taxa de: " + saque.getTaxa());
                     System.out.println("O novo saldo da conta é: " + conta.getSaldo());
                     contaEncontrada = true;
@@ -33,7 +31,7 @@ public class Sacar {
                 }
                 Saque saque = new SaquePadrao();
                 saque.sacar(conta, valor);
-                new HistoricoOperacaoSaque(new Date(), TipoOperacaoConta.SAQUE, valor, valor, conta, "Saque efetuado com sucesso");
+                new HistoricoSaque(new Date(), TipoOperacaoConta.SAQUE, valor, valor, conta, "Saque efetuado com sucesso");
                 System.out.println("\nSaque realizado com sucesso!");
                 System.out.println("O novo saldo da conta é: " + conta.getSaldo());
                 contaEncontrada = true;

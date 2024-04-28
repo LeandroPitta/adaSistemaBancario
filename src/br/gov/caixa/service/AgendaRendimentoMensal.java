@@ -1,6 +1,7 @@
 package br.gov.caixa.service;
 
 import br.gov.caixa.model.Conta;
+import br.gov.caixa.repository.ContaRepositorio;
 import br.gov.caixa.service.operacoes.factory.OpFactory;
 
 import java.math.BigDecimal;
@@ -31,7 +32,7 @@ public class AgendaRendimentoMensal {
     }
 
     private static void render() {
-        List<Conta> contas = ContaService.getInstance().listarContas();
+        List<Conta> contas = ContaRepositorio.getInstance().listar();
         for (Conta conta : contas) {
             BigDecimal taxaRendimento = conta.getCliente().getTipoClienteEnum().equals("CLIENTE_PF") ? TAXARENDIMENTOPF : TAXARENDIMENTOPJ;
             BigDecimal novoSaldo = conta.getSaldo().multiply(taxaRendimento);

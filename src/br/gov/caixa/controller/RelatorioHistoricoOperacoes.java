@@ -1,6 +1,6 @@
 package br.gov.caixa.controller;
 
-import br.gov.caixa.service.historico_operacoes.*;
+import br.gov.caixa.service.historico.*;
 
 public class RelatorioHistoricoOperacoes {
 

@@ -1,8 +1,6 @@
 package br.gov.caixa.controller;
 
-import br.gov.caixa.service.historico_operacoes.HistoricoOperacaoInvestimento;
 import br.gov.caixa.service.operacoes.*;
-import br.gov.caixa.service.TipoOperacaoConta;
 
 import java.util.Date;
 import java.util.Scanner;
