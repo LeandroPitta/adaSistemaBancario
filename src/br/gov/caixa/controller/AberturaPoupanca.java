@@ -2,6 +2,7 @@ package br.gov.caixa.controller;
 
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.model.ContaPoupanca;
+import br.gov.caixa.service.ContaService;
 import br.gov.caixa.service.historico.HistoricoAberturaConta;
 
 import java.util.Date;
@@ -21,7 +22,7 @@ public class AberturaPoupanca {
             String resposta = scanner.nextLine();
             if (resposta.equalsIgnoreCase("sim")) {
 
-                Conta contaPoupanca = new ContaPoupanca(consultaCliente.getClienteEncontrado());
+                Conta contaPoupanca = ContaService.getInstance().aberturaContaPoupanca(consultaCliente.getClienteEncontrado());
 
                 HistoricoAberturaConta.salvar(contaPoupanca);
 

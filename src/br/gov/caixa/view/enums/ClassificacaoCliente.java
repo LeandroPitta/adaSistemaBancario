@@ -2,6 +2,7 @@ package br.gov.caixa.view.enums;
 
 import br.gov.caixa.model.*;
 import br.gov.caixa.model.enums.TipoClienteEnum;
+import br.gov.caixa.service.ClienteService;
 import br.gov.caixa.service.historico.HistoricoAberturaConta;
 
 public enum ClassificacaoCliente {
@@ -11,7 +12,7 @@ public enum ClassificacaoCliente {
         public String instanciarCliente(long id, String nome) {
             String idString = Long.toString(id);
 
-            Cliente clientePF = new ClientePF(id, nome, TipoClienteEnum.CLIENTE_PF);
+            Cliente clientePF = ClienteService.getInstance().cadastrarCliente(id, nome, TipoClienteEnum.CLIENTE_PF);
 
             HistoricoAberturaConta.salvar(clientePF.getContas().get(0));
 
@@ -24,7 +25,7 @@ public enum ClassificacaoCliente {
         public String instanciarCliente(long id, String nome) {
             String idString = Long.toString(id);
 
-            Cliente clientePJ = new ClientePJ(id, nome, TipoClienteEnum.CLIENTE_PJ);
+            Cliente clientePJ = ClienteService.getInstance().cadastrarCliente(id, nome, TipoClienteEnum.CLIENTE_PJ);
 
             HistoricoAberturaConta.salvar(clientePJ.getContas().get(0));
 

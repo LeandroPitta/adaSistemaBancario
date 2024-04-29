@@ -7,7 +7,7 @@ import br.gov.caixa.view.MenuInicio;
 
 import java.util.Scanner;
 
-public enum MenuInicial{
+public enum MenuInicioEnum {
     CADASTRAR_CLIENTE("1 - Cadastrar cliente")  {
 
         @Override
@@ -66,7 +66,7 @@ public enum MenuInicial{
 
     public final String opcaoMenu;
 
-    MenuInicial(String opcaoMenu) {
+    MenuInicioEnum(String opcaoMenu) {
         this.opcaoMenu = opcaoMenu;
     }
 
@@ -82,8 +82,8 @@ public enum MenuInicial{
         return opcao.toString();
     }
 
-    public static MenuInicial fromInteger(int menuSistema) {
-        for (MenuInicial menu : values()) {
+    public static MenuInicioEnum fromInteger(int menuSistema) {
+        for (MenuInicioEnum menu : values()) {
             if (menu.ordinal() + 1 == menuSistema) {
                 return menu;
             }
