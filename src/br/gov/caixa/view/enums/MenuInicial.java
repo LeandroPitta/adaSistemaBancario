@@ -1,8 +1,9 @@
-package br.gov.caixa.view;
+package br.gov.caixa.view.enums;
 
 import br.gov.caixa.controller.AberturaPoupanca;
 import br.gov.caixa.controller.CadastroCliente;
 import br.gov.caixa.controller.ConsultaManutencaoCliente;
+import br.gov.caixa.view.MenuInicio;
 
 import java.util.Scanner;
 

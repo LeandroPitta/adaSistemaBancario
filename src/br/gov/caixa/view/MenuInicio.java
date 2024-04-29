@@ -1,8 +1,10 @@
 package br.gov.caixa.view;
 
+import br.gov.caixa.view.enums.MenuInicial;
+
 import java.util.Scanner;
 
-public abstract class MenuInicio {
+public class MenuInicio {
 
     public static void abrirMenu() {
         Scanner scanner = new Scanner(System.in);

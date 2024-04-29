@@ -2,7 +2,6 @@ package br.gov.caixa.service;
 
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.repository.ContaRepositorio;
-import br.gov.caixa.service.operacoes.factory.OpFactory;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -18,7 +17,18 @@ public class AgendaRendimentoMensal {
     private static final BigDecimal TAXARENDIMENTOPJ = BigDecimal.valueOf(1.0002);
     private static ScheduledExecutorService agenda;
 
-    public static void agendarRendimentoInvestimento() {
+    private static AgendaRendimentoMensal instance;
+
+    private AgendaRendimentoMensal() {}
+
+    public static AgendaRendimentoMensal getInstance() {
+        if (instance == null) {
+            instance = new AgendaRendimentoMensal();
+        }
+        return instance;
+    }
+
+    public void agendarRendimentoInvestimento() {
         agenda = Executors.newSingleThreadScheduledExecutor();
 
         long initialDelay = ChronoUnit.MILLIS.between(LocalDateTime.now(), getDia1DoMes());

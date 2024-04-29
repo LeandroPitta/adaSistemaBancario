@@ -1,6 +1,9 @@
 package br.gov.caixa.controller;
 
-import java.util.Date;
+import br.gov.caixa.model.Conta;
+import br.gov.caixa.repository.ContaRepositorio;
+import br.gov.caixa.service.operacoes.factory.OpFactory;
+
 import java.util.Scanner;
 
 public class ConsultarSaldo {
@@ -12,17 +15,15 @@ public class ConsultarSaldo {
         System.out.print("\n\nDigite o número da conta: ");
         Long id = scanner.nextLong();
 
-        boolean contaEncontrada = false;
-        for (Conta conta : ListaContas.getListaContas()) {
-            if (conta.getId() == id) {
-                System.out.println("O saldo da conta é: " + conta.getSaldo() + "\n\n");
-                new HistoricoOperacaoSaldo(new Date(), TipoOperacaoConta.CONSULTA_SALDO, conta.getSaldo(), conta, "Efetuado a consulta de saldo ");
-                contaEncontrada = true;
-                break;
-            }
+        Conta conta = ContaRepositorio.getInstance().buscarPorId(id);
+
+        if (conta.getId() == id) {
+            System.out.println("O saldo da conta é: " + OpFactory.getInstance().get(conta.getCliente())
+                    .consultarSaldo(conta.getCliente(), conta.getId()) + "\n\n");
+            return;
         }
-        if (!contaEncontrada) {
-            System.out.println("\nConta não encontrada\n");
-        }
+
+        System.out.println("\nConta não encontrada\n");
+
     }
 }

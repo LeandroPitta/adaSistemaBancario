@@ -1,4 +1,4 @@
-package br.gov.caixa.view;
+package br.gov.caixa.view.enums;
 
 import br.gov.caixa.controller.RelatorioCliente;
 import br.gov.caixa.controller.RelatorioHistoricoOperacoes;

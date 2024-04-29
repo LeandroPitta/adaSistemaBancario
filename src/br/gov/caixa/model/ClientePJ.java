@@ -9,8 +9,8 @@ public class ClientePJ extends Cliente {
 
     private String nomeFantasia;
 
-    public ClientePJ(long id, String razaoSocial, StatusEnum statusEnum, TipoClienteEnum tipoClienteEnum, LocalDate dataCadastro) {
-        super(id, razaoSocial, statusEnum, tipoClienteEnum, dataCadastro);
+    public ClientePJ(long id, String razaoSocial, TipoClienteEnum tipoClienteEnum) {
+        super(id, razaoSocial, tipoClienteEnum);
     }
 
     public String getNomeFantasia() {

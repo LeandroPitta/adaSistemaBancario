@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class ClientePF extends Cliente {
 
-    public ClientePF(long id, String nome, StatusEnum statusEnum, TipoClienteEnum tipoClienteEnum, LocalDate dataCadastro) {
-        super(id, nome, statusEnum, tipoClienteEnum, dataCadastro);
+    public ClientePF(long id, String nome, TipoClienteEnum tipoClienteEnum) {
+        super(id, nome, tipoClienteEnum);
     }
 }

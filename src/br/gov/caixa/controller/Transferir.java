@@ -1,7 +1,11 @@
 package br.gov.caixa.controller;
 
+import br.gov.caixa.model.Conta;
+import br.gov.caixa.repository.ContaRepositorio;
 import br.gov.caixa.service.operacoes.*;
+import br.gov.caixa.service.operacoes.factory.OpFactory;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -17,37 +21,22 @@ public class Transferir {
         System.out.print("\n\nDigite o número da conta destino: ");
         Long idDestino = scanner.nextLong();
 
-        boolean contaEncontrada = false;
+        Conta contaOrigem = ContaRepositorio.getInstance().buscarPorId(idOrigem);
+        Conta contaDestino = ContaRepositorio.getInstance().buscarPorId(idDestino);
 
-        for (Conta contaOrigem : ListaContas.getListaContas()) {
-            if (contaOrigem.getId() == idOrigem) {
-                for (Conta contaDestino : ListaContas.getListaContas()) {
-                    if (contaDestino.getId() == idDestino) {
-                        System.out.print("\nQual valor da transferência (0,00): ");
-                        double valor = scanner.nextDouble();
-                        String conferencia = ConferenciaInstanciaCliente.conferir(contaOrigem.getIdCliente());
-                        if ( conferencia.equals("ClientePJ")) {
-                            TransferenciaContaPj transferencia = new TransferenciaContaPj();
-                            transferencia.transferir(contaOrigem, valor, contaDestino);
-                            new HistoricoOperacaoTransferencia(new Date(), TipoOperacaoConta.TRANSFERENCIA, valor, transferencia.getValorReal(), contaOrigem, contaDestino, "Transferencia realizada com sucesso");
-                            System.out.println("\nTransferido com sucesso! Foi cobrado taxa de: " + transferencia.getTaxa());
-                            System.out.println("O novo saldo da conta origem é: " + contaOrigem.getSaldo() + " e o novo saldo da conta destino é: " + contaDestino.getSaldo());
-                            contaEncontrada = true;
-                            break;
-                        }
-                        Transferencia transferencia = new TransferenciaPadrao();
-                        transferencia.transferir(contaOrigem, valor, contaDestino);
-                        new HistoricoOperacaoTransferencia(new Date(), TipoOperacaoConta.TRANSFERENCIA, valor, valor, contaOrigem, contaDestino, "Transferencia realizada com sucesso");
-                        System.out.println("\nTransferido com sucesso!");
-                        System.out.println("O novo saldo da conta origem é: " + contaOrigem.getSaldo() + " e o novo saldo da conta destino é: " + contaDestino.getSaldo());
-                        contaEncontrada = true;
-                        break;
-                    }
-                }
-            }
+        if (contaOrigem.getId() == idOrigem && contaDestino.getId() == idDestino) {
+            System.out.print("\nQual valor da transferência (0,00): ");
+            BigDecimal valor = scanner.nextBigDecimal();
+
+            OpFactory.getInstance().get(contaOrigem.getCliente())
+                    .transferir(contaOrigem.getCliente(), contaOrigem.getId(), contaDestino, valor);
+
+            System.out.println("\nTransferido com sucesso!");
+
+            return;
         }
-        if (!contaEncontrada) {
-            System.out.println("\nConta origem ou destino não encontrada\n");
-        }
+
+        System.out.println("\nConta origem ou destino não encontrada\n");
+
     }
 }

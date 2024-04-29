@@ -1,8 +1,8 @@
-package br.gov.caixa.view;
+package br.gov.caixa.view.enums;
 
-import br.gov.caixa.model.enums.StatusEnum;
-
-import java.util.Date;
+import br.gov.caixa.model.*;
+import br.gov.caixa.model.enums.TipoClienteEnum;
+import br.gov.caixa.service.historico.HistoricoAberturaConta;
 
 public enum ClassificacaoCliente {
     CLIENTE_PF("1 - Cliente PF") {
@@ -10,12 +10,11 @@ public enum ClassificacaoCliente {
         @Override
         public String instanciarCliente(long id, String nome) {
             String idString = Long.toString(id);
-            if (idString.length() != 11) {
-                return "\nCPF digitado não é válido!\n";
-            }
-            new ClientePF(id, nome, StatusEnum.ATIVO);
-            Conta conta = new ContaCorrente(id);
-            new HistoricoAberturaConta(new Date(), TipoOperacaoConta.ABERTURA_CONTA, conta, "Cliente " + nome + " cadastrado e abertura de conta efetuada com sucesso!");
+
+            Cliente clientePF = new ClientePF(id, nome, TipoClienteEnum.CLIENTE_PF);
+
+            HistoricoAberturaConta.salvar(clientePF.getContas().get(0));
+
             return "\nCliente e Conta cadastrados com sucesso!\n";
         }
     },
@@ -24,12 +23,11 @@ public enum ClassificacaoCliente {
         @Override
         public String instanciarCliente(long id, String nome) {
             String idString = Long.toString(id);
-            if (idString.length() != 14) {
-                return "\nCNPJ digitado não é válido!\n";
-            }
-            new ClientePJ(id, nome, StatusEnum.ATIVO);
-            Conta conta = new ContaCorrente(id);
-            new HistoricoAberturaConta(new Date(), TipoOperacaoConta.ABERTURA_CONTA, conta, "Cliente " + nome + " cadastrado e abertura de conta efetuada com sucesso!");
+
+            Cliente clientePJ = new ClientePJ(id, nome, TipoClienteEnum.CLIENTE_PJ);
+
+            HistoricoAberturaConta.salvar(clientePJ.getContas().get(0));
+
             return "\nCliente e Conta cadastrados com sucesso!\n";
         }
     };

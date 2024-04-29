@@ -1,22 +1,12 @@
 package br.gov.caixa.controller;
 
-import br.gov.caixa.service.historico.*;
+import br.gov.caixa.model.Conta;
+import br.gov.caixa.repository.HistoricoRepositorio;
 
 public class RelatorioHistoricoOperacoes {
 
     public String gerarRelatorio() {
-        StringBuilder relatorio = new StringBuilder();
-
-        for (HistoricoOperacao historicoOperacao : ListaHistoricoOperacoes.getHistoricoOperacoes()) {
-            concatenarNaoNulo(relatorio, "\nData: ", historicoOperacao.getData());
-            concatenarNaoNulo(relatorio, "Tipo: ", historicoOperacao.getTipo());
-            concatenarNaoNulo(relatorio, "Valor Pretendido: ", historicoOperacao.getValorPretendido());
-            concatenarNaoNulo(relatorio, "Valor Real: ", historicoOperacao.getValorReal());
-            concatenarNaoNulo(relatorio, "Conta Origem: ", historicoOperacao.getContaOrigem());
-            concatenarNaoNulo(relatorio, "Conta Destino: ", historicoOperacao.getContaDestino());
-            concatenarNaoNulo(relatorio, "Observação: ", historicoOperacao.getObservacao());
-            relatorio.append("-------------------------------------------------------------------------------\n"); }
-
+        String relatorio = HistoricoRepositorio.getInstance().listar().toString();
         return relatorio.toString();
     }
 

@@ -1,6 +1,7 @@
 package br.gov.caixa.model;
 
 import br.gov.caixa.model.enums.StatusEnum;
+import br.gov.caixa.repository.ContaRepositorio;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -20,7 +21,8 @@ public abstract class Conta {
         this.dataAtualizacao = LocalDate.now();
         this.statusEnum = StatusEnum.ATIVO;
         this.cliente = cliente;
-        cliente.addEmContas(this);
+        //cliente.addEmContas(this);
+        //ContaRepositorio.getInstance().adicionar(this);
     }
 
     public long getId() {
