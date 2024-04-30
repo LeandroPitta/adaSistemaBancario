@@ -1,13 +1,13 @@
 package br.gov.caixa.repository;
 
-import br.gov.caixa.service.historico.Historico;
+import br.gov.caixa.service.HistoricoService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistoricoRepositorio {
 
-    private List<Historico> lista = new ArrayList<>();
+    private List<HistoricoService> lista = new ArrayList<>();
 
     private static HistoricoRepositorio instance;
 
@@ -21,11 +21,11 @@ public class HistoricoRepositorio {
         return instance;
     }
 
-    public List<Historico> listar() {
+    public List<HistoricoService> listar() {
         return lista;
     }
 
-    public void adicionar(Historico item) {
+    public void adicionar(HistoricoService item) {
         lista.add(item);
     }
 }

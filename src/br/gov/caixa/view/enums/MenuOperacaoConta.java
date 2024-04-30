@@ -1,6 +1,6 @@
 package br.gov.caixa.view.enums;
 
-import br.gov.caixa.controller.*;
+import br.gov.caixa.view.operacoes.*;
 
 public enum MenuOperacaoConta {
     CONSULTA_SALDO("1 - Consultar Saldo") {

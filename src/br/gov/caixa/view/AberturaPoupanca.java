@@ -2,7 +2,7 @@ package br.gov.caixa.view;
 
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.service.ContaService;
-import br.gov.caixa.service.historico.HistoricoAberturaConta;
+import br.gov.caixa.service.HistoricoService;
 
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class AberturaPoupanca {
 
                 Conta contaPoupanca = ContaService.getInstance().aberturaContaPoupanca(consultaCliente.getClienteEncontrado());
 
-                HistoricoAberturaConta.salvar(contaPoupanca);
+                HistoricoService.historicoAberturaConta(contaPoupanca);
 
                 System.out.println("Conta poupança aberta com sucesso!");
                 return;

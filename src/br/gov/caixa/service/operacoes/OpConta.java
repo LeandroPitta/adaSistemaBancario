@@ -5,8 +5,7 @@ import br.gov.caixa.model.Cliente;
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.model.ContaInvestimento;
 import br.gov.caixa.repository.ContaRepositorio;
-import br.gov.caixa.service.historico.HistoricoDeposito;
-import br.gov.caixa.service.historico.HistoricoTransferencia;
+import br.gov.caixa.service.HistoricoService;
 import br.gov.caixa.service.operacoes.factory.OpFactory;
 
 import java.math.BigDecimal;
@@ -45,14 +44,14 @@ public interface OpConta<T extends Cliente> extends
         OpFactory.getInstance().get(destino.getCliente())
                 .depositar(destino.getCliente(), destino.getId(), valor);
 
-        HistoricoTransferencia.salvar(valor, ContaRepositorio.getInstance().buscarPorId(idContaOrigem), destino);
+        HistoricoService.historicoTransferencia(valor, ContaRepositorio.getInstance().buscarPorId(idContaOrigem), destino);
     }
 
     default void depositar(T cliente, long idConta, BigDecimal valor) {
         Conta conta = this.getContaCliente(cliente, idConta);
         conta.setSaldo(conta.getSaldo().add(valor));
 
-        HistoricoDeposito.salvar(valor, conta);
+        HistoricoService.historicoDeposito(valor, conta);
 
     }
 

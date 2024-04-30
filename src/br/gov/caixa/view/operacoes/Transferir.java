@@ -1,12 +1,10 @@
-package br.gov.caixa.controller;
+package br.gov.caixa.view.operacoes;
 
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.repository.ContaRepositorio;
-import br.gov.caixa.service.operacoes.*;
 import br.gov.caixa.service.operacoes.factory.OpFactory;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Transferir {

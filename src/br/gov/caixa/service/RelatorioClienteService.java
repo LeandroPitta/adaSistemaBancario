@@ -4,7 +4,7 @@ import br.gov.caixa.model.Cliente;
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.repository.ClienteRepositorio;
 
-public class RelatorioCliente {
+public class RelatorioClienteService {
 
     public static String gerarRelatorio() {
         StringBuilder relatorio = new StringBuilder();

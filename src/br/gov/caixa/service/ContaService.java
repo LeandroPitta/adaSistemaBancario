@@ -5,7 +5,6 @@ import br.gov.caixa.model.Conta;
 import br.gov.caixa.model.ContaCorrente;
 import br.gov.caixa.model.ContaPoupanca;
 import br.gov.caixa.repository.ContaRepositorio;
-import br.gov.caixa.service.historico.HistoricoAberturaConta;
 
 public class ContaService {
 
@@ -25,7 +24,7 @@ public class ContaService {
         Conta conta = new ContaCorrente(cliente);
         cliente.addEmContas(conta);
         ContaRepositorio.getInstance().adicionar(conta);
-        HistoricoAberturaConta.salvar(conta);
+        HistoricoService.historicoAberturaConta(conta);
         return conta;
     }
 
@@ -34,7 +33,7 @@ public class ContaService {
         Conta conta = new ContaPoupanca(cliente);
         cliente.addEmContas(conta);
         ContaRepositorio.getInstance().adicionar(conta);
-        HistoricoAberturaConta.salvar(conta);
+        HistoricoService.historicoAberturaConta(conta);
         return conta;
     }
 }

@@ -1,19 +1,19 @@
 package br.gov.caixa.controller;
 
-import br.gov.caixa.service.RelatorioCliente;
-import br.gov.caixa.service.historico.RelatorioHistoricoOperacoes;
+import br.gov.caixa.service.RelatorioClienteService;
+import br.gov.caixa.service.RelatorioHistoricoService;
 
 public class RelatoriosController {
 
     public static String executarRelatorioCliente() {
 
-        return RelatorioCliente.gerarRelatorio();
+        return RelatorioClienteService.gerarRelatorio();
 
     }
 
     public static String executarRelatorioHistoricoOperacoes() {
 
-        return RelatorioHistoricoOperacoes.gerarRelatorio();
+        return RelatorioHistoricoService.gerarRelatorio();
 
     }
 }

@@ -1,4 +1,4 @@
-package br.gov.caixa.controller;
+package br.gov.caixa.view.operacoes;
 
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.repository.ContaRepositorio;

@@ -4,8 +4,7 @@ import br.gov.caixa.model.ClientePJ;
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.model.ContaInvestimento;
 import br.gov.caixa.repository.ContaRepositorio;
-import br.gov.caixa.service.historico.HistoricoInvestimento;
-import br.gov.caixa.service.historico.HistoricoSaque;
+import br.gov.caixa.service.HistoricoService;
 import br.gov.caixa.service.operacoes.OpConta;
 
 import java.math.BigDecimal;
@@ -24,7 +23,7 @@ public class OpContaPJ implements OpConta<ClientePJ> {
         }
         conta.setSaldo(conta.getSaldo().add(valor));
 
-        HistoricoInvestimento.salvar(valor, cliente.getContas().get(0), conta);
+        HistoricoService.historicoInvestimento(valor, conta);
 
     }
 
@@ -36,7 +35,7 @@ public class OpContaPJ implements OpConta<ClientePJ> {
         OpConta.super.verificarSaldo(conta, valorComTaxa);
         conta.setSaldo(conta.getSaldo().subtract(valorComTaxa));
 
-        HistoricoSaque.salvar(valor, valorComTaxa, conta);
+        HistoricoService.historicoSaque(valor, valorComTaxa, conta);
     }
 
 }
