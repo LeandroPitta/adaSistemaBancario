@@ -1,11 +1,9 @@
-package br.gov.caixa.controller;
+package br.gov.caixa.view;
 
 import br.gov.caixa.model.Conta;
-import br.gov.caixa.model.ContaPoupanca;
 import br.gov.caixa.service.ContaService;
 import br.gov.caixa.service.historico.HistoricoAberturaConta;
 
-import java.util.Date;
 import java.util.Scanner;
 
 public class AberturaPoupanca {

@@ -1,9 +1,10 @@
 package br.gov.caixa.view.enums;
 
-import br.gov.caixa.controller.AberturaPoupanca;
-import br.gov.caixa.controller.CadastroCliente;
-import br.gov.caixa.controller.ConsultaManutencaoCliente;
+import br.gov.caixa.view.AberturaPoupanca;
+import br.gov.caixa.view.CadastroCliente;
+import br.gov.caixa.view.ConsultaManutencaoCliente;
 import br.gov.caixa.view.MenuInicio;
+import br.gov.caixa.view.MenuRelatorios;
 
 import java.util.Scanner;
 
@@ -23,7 +24,6 @@ public enum MenuInicioEnum {
         }
     },
     CONSULTAR_CONTA("3 - Consulta e operações de conta") {
-
         @Override
         public void opcaoSelecionada() {
             Scanner scanner = new Scanner(System.in);
@@ -40,27 +40,21 @@ public enum MenuInicioEnum {
         }
     },
     ABRIR_POUPANCA("4 - Abrir conta poupança") {
-
         @Override
         public void opcaoSelecionada() {
             new AberturaPoupanca().abrirPoupanca();
         }
     },
     RELATORIOS("5 - Relatórios") {
-
         @Override
         public void opcaoSelecionada() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("\n");
-            System.out.print(MenuRelatorios.imprimirOpcoes());
-            System.out.print("Para selecionar uma opção, digite seu número: ");
-            MenuRelatorios relatorios = MenuRelatorios.fromInteger(scanner.nextInt());
-            try {
-                relatorios.opcaoSelecionada();
-            } catch (NullPointerException ex) {
-                System.out.println("\nNão foi selecionado uma classificação valida.");
-                MenuInicio.abrirMenu();
-            }
+            MenuRelatorios.imprimirMenuRelatorios();
+        }
+    },
+    ENCERRAR_APLICACAO("6 - Encerrar aplicação") {
+        @Override
+        public void opcaoSelecionada() {
+            System.exit(0);
         }
     };
 

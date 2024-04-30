@@ -1,11 +1,9 @@
-package br.gov.caixa.controller;
+package br.gov.caixa.view;
 
 import br.gov.caixa.model.Cliente;
 import br.gov.caixa.model.Conta;
 import br.gov.caixa.repository.ClienteRepositorio;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ConsultaManutencaoCliente {

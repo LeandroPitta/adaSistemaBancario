@@ -24,7 +24,6 @@ public class CampanhaPromocionalService {
         List<String> contasAbertas = Files.lines(pathOrigem)
                 .skip(1)
                 .map(linha -> linha.split(","))
-                .filter(dados -> dados.length == 4)
                 .filter(dados -> {
                     String tipo = dados[3];
                     if ("2".equals(tipo)) {

@@ -24,8 +24,9 @@ public class CampanhaPromocional {
         switch (opcao) {
             case 1:
                 if (CampanhaPromocionalController.executarCampanhaPromocional()) {
-                    System.out.println("\nContas abertas com sucesso! " +
-                            "Foi gerado o arquivo contas-abertas.csv com o relatório de contas abertas.\n");
+                    System.out.println("\nContas abertas com sucesso!\n" +
+                            "Ao encerrar a aplicação vai ser gerado o arquivo contas-abertas.csv" +
+                            " com o relatório das contas abertas.\n");
                 }else {
                     System.out.println("Houve algum erro no tratamento do arquivo.");
                 }
